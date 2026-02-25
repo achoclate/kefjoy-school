@@ -17,17 +17,21 @@ const NAV_LINKS = [
     ],
   },
   {
-    label: "Programs",
-    path: "/programs",
-    sub: [
-      { label: "The Arts",  path: "/programs#arts" },
-      { label: "Sciences",  path: "/programs#sciences" },
-      { label: "Maths",     path: "/programs#maths" },
-      { label: "Reading",   path: "/programs#reading" },
-      { label: "Sports",    path: "/programs#sports" },
-      { label: "Online",    path: "/programs#online" },
-    ],
+    label: "About Us",
+    path: "/about",
   },
+  // {
+  //   label: "Programs",
+  //   path: "/programs",
+  //   sub: [
+  //     { label: "The Arts",  path: "/programs#arts" },
+  //     { label: "Sciences",  path: "/programs#sciences" },
+  //     { label: "Maths",     path: "/programs#maths" },
+  //     { label: "Reading",   path: "/programs#reading" },
+  //     { label: "Sports",    path: "/programs#sports" },
+  //     { label: "Online",    path: "/programs#online" },
+  //   ],
+  // },
   {
     label: "Admission",
     path: "/admission",
