@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
+import Footer from "./Footer";
 
-// DATA
+// ─── DATA ────────────────────────────────────────────────────────────────────
 
 const VALUES = [
-  { icon: "🤝", title: "Inclusivity",   desc: "Every child is welcome regardless of background, ability or need." },
-  { icon: "👥", title: "Teamwork",      desc: "We grow together — students, teachers and parents as one community." },
-  { icon: "🙏", title: "Godliness",     desc: "Faith is at the heart of everything we do, guiding our daily walk." },
-  { icon: "❤️", title: "Love & Care",   desc: "A warm, nurturing environment where every child feels safe and valued." },
-  { icon: "📏", title: "Discipline",    desc: "Building self-control and responsibility from the earliest years." },
+  { icon: "🤝", title: "Inclusivity",  desc: "Every child is welcome regardless of background, ability or need." },
+  { icon: "👥", title: "Teamwork",     desc: "We grow together — students, teachers and parents as one community." },
+  { icon: "🙏", title: "Godliness",    desc: "Faith is at the heart of everything we do, guiding our daily walk." },
+  { icon: "❤️", title: "Love & Care", desc: "A warm, nurturing environment where every child feels safe and valued." },
+  { icon: "📏", title: "Discipline",   desc: "Building self-control and responsibility from the earliest years." },
 ];
 
 const TRUST_REASONS = [
@@ -38,29 +39,30 @@ const MILESTONES = [
   { year: "2023", text: "Two blocks, three floors, computer room and library fully operational" },
 ];
 
-const QUICK_LINKS    = ["Gallery", "Events", "Contact Us", "Programs", "Admission"];
-const ACADEMIC_LINKS = ["Pre-School", "Lower Primary", "Upper Primary", "Junior Secondary"];
+const STATS = [
+  { number: "19+",  label: "Years of Excellence",         icon: "🏆" },
+  { number: "500+", label: "Children Impacted",            icon: "👦" },
+  { number: "2",    label: "Blocks, 3 Floors of Space",   icon: "🏫" },
+  { number: "100%", label: "Christian-Based Environment",  icon: "🙏" },
+];
 
-// COMPONENT 
+// ─── COMPONENT ───────────────────────────────────────────────────────────────
 
 export default function About() {
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/*PAGE HERO*/}
+      {/* ── PAGE HERO ── */}
       <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-900
                           flex items-center justify-center overflow-hidden min-h-[340px]">
         <div className="absolute inset-0 bg-black/30" />
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)",
-            backgroundSize: "30px 30px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-10"
+             style={{
+               backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)",
+               backgroundSize: "30px 30px",
+             }} />
         <div className="relative z-10 text-center text-white max-w-3xl mx-auto">
-          {/* Breadcrumb */}
           <div className="flex items-center justify-center gap-2 text-xs font-sans text-white/60 mb-4 uppercase tracking-widest">
             <Link to="/" className="hover:text-yellow-400 transition-colors no-underline text-white/60">Home</Link>
             <span>›</span>
@@ -79,11 +81,9 @@ export default function About() {
         </div>
       </section>
 
-      {/*WHO WE ARE */}
+      {/* ── WHO WE ARE ── */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
-          {/* Image placeholder */}
           <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-[420px] bg-gradient-to-br from-green-700 to-green-900
                             flex items-center justify-center text-8xl">🏫</div>
@@ -94,7 +94,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Text */}
           <div>
             <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
               We Are
@@ -116,24 +115,17 @@ export default function About() {
             <p className="text-base leading-relaxed text-gray-600 font-sans">
               Our motto,{" "}
               <strong className="text-green-800">"UNLOCKING EVERY CHILD'S POTENTIAL"</strong>, drives
-              everything we do — from our Integrated Special Unit to our child-centred teaching methods
-              that encourage participation in all activities.
+              everything we do — from our Integrated Special Unit to our child-centred teaching methods.
             </p>
-
-            {/* Mission & Vision */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               <div className="bg-green-50 border border-green-100 border-l-4 border-l-green-700 rounded-xl p-5">
-                <h4 className="text-xs font-black uppercase tracking-wide text-green-800 mb-2 font-sans">
-                  Our Vision
-                </h4>
+                <h4 className="text-xs font-black uppercase tracking-wide text-green-800 mb-2 font-sans">Our Vision</h4>
                 <p className="text-sm leading-relaxed text-gray-600 font-sans">
                   A distinguished, inclusive, Christian-based school where all children blossom.
                 </p>
               </div>
               <div className="bg-yellow-50 border border-yellow-100 border-l-4 border-l-yellow-400 rounded-xl p-5">
-                <h4 className="text-xs font-black uppercase tracking-wide text-green-800 mb-2 font-sans">
-                  Our Mission
-                </h4>
+                <h4 className="text-xs font-black uppercase tracking-wide text-green-800 mb-2 font-sans">Our Mission</h4>
                 <p className="text-sm leading-relaxed text-gray-600 font-sans">
                   To offer the ultimate Christian-based nurturing environment where children always
                   look forward to learning through play, self-discovery and nature.
@@ -147,34 +139,23 @@ export default function About() {
       {/* ── OUR HISTORY / TIMELINE ── */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
-            All About
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">
-            Our History
-          </h2>
+          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">All About</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Our History</h2>
           <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
           <p className="text-base leading-relaxed text-gray-600 font-sans max-w-3xl mb-14">
             For 19 years, Kefjoy Academy has been providing a fun, nurturing and safe environment for
             children to learn and grow. From a humble beginning in a 3-bedroomed residential house, we
             are now an establishment with two blocks with three floors, an equipped computer room and library.
           </p>
-
-          {/* Timeline */}
           <div className="relative">
-            {/* vertical line */}
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-green-200 -translate-x-0.5" />
-
             <div className="flex flex-col gap-10">
               {MILESTONES.map((m, i) => (
                 <div key={m.year}
                      className={`relative flex flex-col md:flex-row items-start md:items-center gap-6
                                  ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                  {/* Dot */}
                   <div className="absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-yellow-400
                                   border-4 border-white shadow -translate-x-2 mt-1 md:mt-0" />
-
-                  {/* Card */}
                   <div className={`ml-16 md:ml-0 md:w-[calc(50%-40px)] bg-white rounded-xl p-6
                                    shadow-sm border border-gray-100
                                    ${i % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
@@ -191,17 +172,12 @@ export default function About() {
         </div>
       </section>
 
-      {/*OUR VALUES */}
+      {/* ── OUR VALUES ── */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
-            These Are
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">
-            Our Values
-          </h2>
+          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">These Are</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Our Values</h2>
           <div className="w-14 h-1 bg-yellow-400 rounded mb-12" />
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {VALUES.map((v) => (
               <div key={v.title}
@@ -216,7 +192,7 @@ export default function About() {
         </div>
       </section>
 
-      {/*MOTTO BANNER*/}
+      {/* ── MOTTO BANNER ── */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-16 px-6 text-center text-white">
         <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-4 font-sans">Our Motto</p>
         <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto">
@@ -228,20 +204,17 @@ export default function About() {
         </p>
       </div>
 
-      {/* OUR TEAM*/}
+      {/* ── OUR TEAM ── */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Our</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">
-            Leadership Team
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Leadership Team</h2>
           <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
           <p className="text-base leading-relaxed text-gray-600 font-sans max-w-2xl mb-12">
             We are blessed with a team of qualified and experienced teachers and support staff who are
             always ready and willing to nurture our precious gems. Our competent teachers handle children
             with love, employing child-centred teaching methods that encourage participation in all activities.
           </p>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {TEAM.map((t) => (
               <div key={t.name}
@@ -264,7 +237,7 @@ export default function About() {
         </div>
       </section>
 
-      {/*WHY TRUST US*/}
+      {/* ── WHY TRUST US ── */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
@@ -286,15 +259,8 @@ export default function About() {
               ))}
             </ul>
           </div>
-
-          {/* Stats */}
           <div className="flex flex-col gap-6">
-            {[
-              { number: "19+", label: "Years of Excellence",        icon: "🏆" },
-              { number: "500+", label: "Children Impacted",          icon: "👦" },
-              { number: "2",   label: "Blocks, 3 Floors of Space",  icon: "🏫" },
-              { number: "100%", label: "Christian-Based Environment", icon: "🙏" },
-            ].map((s) => (
+            {STATS.map((s) => (
               <div key={s.label}
                    className="flex items-center gap-5 bg-green-50 border border-green-100
                               rounded-2xl p-5 hover:shadow-md transition-all duration-300">
@@ -312,7 +278,7 @@ export default function About() {
         </div>
       </section>
 
-      {/*CTA BANNER*/}
+      {/* ── CTA BANNER ── */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Join Our Family?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
@@ -323,8 +289,7 @@ export default function About() {
           <Link to="/admission"
              className="inline-block bg-yellow-400 text-green-900 px-10 py-4 rounded font-black text-sm
                         uppercase tracking-wide font-sans transition-all duration-200 no-underline
-                        hover:bg-yellow-300 hover:-translate-y-0.5
-                        shadow-[0_4px_20px_rgba(240,192,64,0.4)]">
+                        hover:bg-yellow-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(240,192,64,0.4)]">
             Apply Now
           </Link>
           <Link to="/contact"
@@ -336,96 +301,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* ── SOCIAL / CONTACT BAR ── */}
-      <div className="bg-green-950 py-14 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-12 items-start justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">Follow Us</h3>
-            <p className="text-sm text-white/60 mb-4 font-sans">Stay connected with us on social media</p>
-            <div className="flex gap-3">
-              {["f", "in", "tw", "yt"].map((s) => (
-                <a key={s} href={
-                    s === "f"  ? "https://www.facebook.com/KefjoyA/" :
-                    s === "in" ? "https://www.instagram.com/kefjoyacademy/" :
-                    s === "yt" ? "https://youtube.com/@kefjoyacademy" : "#"
-                  }
-                  target="_blank" rel="noreferrer"
-                  className="w-11 h-11 rounded-full border-2 border-white/30 flex items-center
-                             justify-center text-white text-sm font-bold font-sans no-underline
-                             transition-all duration-200 hover:border-yellow-400 hover:bg-yellow-400/10">
-                  {s}
-                </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">Contact Details</h3>
-            <div className="text-sm text-white/75 font-sans leading-8">
-              <p>📍 Nairobi, Kenya</p>
-              <p>📞 +254 700 000 000</p>
-              <p>✉️ <a href="mailto:info@kefjoyacademy.sc.ke" className="text-yellow-400 no-underline">info@kefjoyacademy.sc.ke</a></p>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">School Hours</h3>
-            <div className="text-sm text-white/75 font-sans leading-8">
-              <p>Monday – Friday</p>
-              <p>7:30 AM – 4:30 PM</p>
-              <p className="text-yellow-400">Term dates available on request</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/*FOOTER*/}
-      <footer className="bg-green-950 border-t border-white/10 pt-16 px-6 pb-0">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-3">Kefjoy Academy & Cradle</h3>
-            <p className="text-sm text-white/60 font-sans leading-relaxed">
-              A Christian-based centre striving to develop whole, balanced minds in children.
-              Our Integrated Special Unit ensures every child's potential is unlocked.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Quick Links</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {QUICK_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to={`/${l.toLowerCase().replace(/ /g, "-")}`}
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Academics</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {ACADEMIC_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to="/academics"
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Get In Touch</h4>
-            <div className="text-sm text-white/60 font-sans leading-8">
-              <p>📍 Nairobi, Kenya</p>
-              <p>📞 +254 700 000 000</p>
-              <p>✉️ <a href="mailto:info@kefjoyacademy.sc.ke"
-                       className="text-yellow-400 no-underline hover:underline">
-                info@kefjoyacademy.sc.ke</a></p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-white/10 py-5 text-center text-xs text-white/35 font-sans">
-          Copyright © Kefjoy Academy & Cradle 2026. All Rights Reserved.
-        </div>
-      </footer>
+      {/* ── FOOTER ── */}
+      <Footer />
 
       {/* Scroll to top */}
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

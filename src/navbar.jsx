@@ -140,7 +140,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* ── Hamburger ── */}
+          {/* Hamburger*/}
           <button
             className="lg:hidden flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -156,7 +156,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── Mobile Menu ── */}
+      {/* Mobile Menu  */}
       {menuOpen && (
         <div className="lg:hidden fixed top-[70px] left-0 right-0 bottom-0 bg-green-950/98
                         z-40 overflow-y-auto flex flex-col p-5 gap-1">

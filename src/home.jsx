@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
+import Footer from "./Footer";
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
 
 const HERO_SLIDES = [
   {
@@ -47,13 +50,11 @@ const WHY_CHOOSE = [
   { icon: "👨‍🏫", title: "Experienced Educators",  desc: "Passionate teachers committed to unlocking each child's unique potential." },
 ];
 
-const QUICK_LINKS    = ["Gallery","Events","Contact Us","Programs","Admission"];
-const ACADEMIC_LINKS = ["Pre-School","Lower Primary","Upper Primary","Junior Secondary"];
+// ─── COMPONENT ───────────────────────────────────────────────────────────────
 
-// COMPONENT 
-export default function KefjoyAcademy() {
-  const [slide, setSlide]   = useState(0);
-  const intervalRef         = useRef(null);
+export default function Home() {
+  const [slide, setSlide] = useState(0);
+  const intervalRef       = useRef(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(
@@ -67,11 +68,9 @@ export default function KefjoyAcademy() {
 
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
-
-      {/* Shared Navbar (handles its own scroll + routing) */}
       <Navbar />
 
-      {/* HERO */}
+      {/* ── HERO ── */}
       <section
         id="home"
         className={`relative min-h-screen flex items-center justify-center overflow-hidden
@@ -85,9 +84,11 @@ export default function KefjoyAcademy() {
             backgroundSize: "30px 30px",
           }}
         />
-
-        <div key={slide} className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto"
-             style={{ animation: "fadeUp 0.8s ease forwards" }}>
+        <div
+          key={slide}
+          className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto"
+          style={{ animation: "fadeUp 0.8s ease forwards" }}
+        >
           <span className="inline-block bg-yellow-400 text-green-900 text-xs font-black
                            tracking-[3px] uppercase px-5 py-1.5 rounded-full mb-5 font-sans">
             Kefjoy Academy & Cradle
@@ -126,7 +127,7 @@ export default function KefjoyAcademy() {
         </div>
       </section>
 
-      {/*ICON BAR */}
+      {/* ── ICON BAR ── */}
       <div className="bg-green-900 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-center flex-wrap">
           {PROGRAMS.map((p, i) => (
@@ -143,16 +144,15 @@ export default function KefjoyAcademy() {
         </div>
       </div>
 
-      {/* ABOUT */}
+      {/* ── ABOUT ── */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
           <div className="relative rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
             <div className="w-full h-[420px] bg-gradient-to-br from-green-700 to-green-900
                             flex items-center justify-center text-8xl">🏫</div>
             <div className="absolute bottom-6 left-6 bg-yellow-400 text-green-900 px-5 py-3
                             rounded-lg font-bold font-sans text-sm text-center">
-              <span className="block text-3xl font-black">10+</span>
+              <span className="block text-3xl font-black">19+</span>
               Years of Excellence
             </div>
           </div>
@@ -174,7 +174,6 @@ export default function KefjoyAcademy() {
               We accommodate children of all backgrounds and provide the best programs that inform and
               transform a child into a responsible young person who can positively impact the community.
             </p>
-
             <div className="grid grid-cols-2 gap-4 mt-8">
               {[
                 { title: "Our Mission", text: "Provide an excellent curriculum and a wide range of activities in a caring, Christian learning environment." },
@@ -189,7 +188,6 @@ export default function KefjoyAcademy() {
                 </div>
               ))}
             </div>
-
             <Link to="/about"
                className="inline-block mt-8 bg-yellow-400 text-green-900 px-8 py-3.5 rounded font-black
                           text-sm uppercase tracking-wide font-sans transition-all duration-200
@@ -201,7 +199,7 @@ export default function KefjoyAcademy() {
         </div>
       </section>
 
-      {/*  PROGRAMS */}
+      {/* ── PROGRAMS ── */}
       <section id="programs" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
@@ -231,7 +229,7 @@ export default function KefjoyAcademy() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
+      {/* ── WHY CHOOSE US ── */}
       <section id="why" className="py-20 px-6 bg-green-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
@@ -255,7 +253,7 @@ export default function KefjoyAcademy() {
         </div>
       </section>
 
-      {/* CTA BANNER  */}
+      {/* ── CTA BANNER ── */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Enrol Your Child?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
@@ -271,11 +269,13 @@ export default function KefjoyAcademy() {
         </Link>
       </div>
 
-      {/* CLUBS & FACILITIES  */}
+      {/* ── CLUBS & FACILITIES ── */}
       <section id="clubs" className="py-20 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Extra-Curricular</p>
+            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
+              Extra-Curricular
+            </p>
             <h2 className="text-4xl font-bold text-green-900 mb-4">Our Clubs</h2>
             <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
             <ul className="flex flex-col gap-2 list-none p-0 m-0">
@@ -288,7 +288,9 @@ export default function KefjoyAcademy() {
             </ul>
           </div>
           <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Infrastructure</p>
+            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
+              Infrastructure
+            </p>
             <h2 className="text-4xl font-bold text-green-900 mb-4">Our Facilities</h2>
             <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
             <ul className="flex flex-col gap-2 list-none p-0 m-0">
@@ -303,88 +305,8 @@ export default function KefjoyAcademy() {
         </div>
       </section>
 
-      {/*  SOCIAL / CONTACT BAR */}
-      <div className="bg-green-950 py-14 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-12 items-start justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">Follow Us</h3>
-            <p className="text-sm text-white/60 mb-4 font-sans">Stay connected with us on social media</p>
-            <div className="flex gap-3">
-              {["f","in","tw","yt"].map((s) => (
-                <div key={s} className="w-11 h-11 rounded-full border-2 border-white/30 flex items-center
-                                        justify-center text-white text-sm font-bold font-sans cursor-pointer
-                                        transition-all duration-200 hover:border-yellow-400 hover:bg-yellow-400/10">
-                  {s}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">Contact Details</h3>
-            <div className="text-sm text-white/75 font-sans leading-8">
-              <p>📍 Nairobi, Kenya</p>
-              <p>📞 +254 700 000 000</p>
-              <p>✉️ <a href="mailto:info@kefjoyacademy.sc.ke" className="text-yellow-400 no-underline">info@kefjoyacademy.sc.ke</a></p>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-yellow-400 mb-3">School Hours</h3>
-            <div className="text-sm text-white/75 font-sans leading-8">
-              <p>Monday – Friday</p>
-              <p>7:30 AM – 4:30 PM</p>
-              <p className="text-yellow-400">Term dates available on request</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FOOTER  */}
-      <footer className="bg-green-950 border-t border-white/10 pt-16 px-6 pb-0">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-3">Kefjoy Academy & Cradle</h3>
-            <p className="text-sm text-white/60 font-sans leading-relaxed">
-              A Christian-based centre striving to develop whole, balanced minds in children.
-              Our Integrated Special Unit ensures every child's potential is unlocked.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Quick Links</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {QUICK_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to={`/${l.toLowerCase().replace(/ /g,"-")}`}
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Academics</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {ACADEMIC_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to="/academics"
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Get In Touch</h4>
-            <div className="text-sm text-white/60 font-sans leading-8">
-              <p>📍 Nairobi, Kenya</p>
-              <p>📞 +254 700 000 000</p>
-              <p>✉️ <a href="mailto:info@kefjoyacademy.sc.ke" className="text-yellow-400 no-underline hover:underline">info@kefjoyacademy.sc.ke</a></p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-white/10 py-5 text-center text-xs text-white/35 font-sans">
-          Copyright © Kefjoy Academy & Cradle 2026. All Rights Reserved.
-        </div>
-      </footer>
+      {/* ── FOOTER ── */}
+      <Footer />
 
       {/* Scroll to top */}
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

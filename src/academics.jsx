@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
+import Footer from "./Footer";
 
+// ─── DATA ────────────────────────────────────────────────────────────────────
 
 const STAGES = [
   {
@@ -102,9 +104,6 @@ const APPROACH_CARDS = [
   { icon: "📊", title: "Continuous Assessment", desc: "Regular formative and summative assessments ensure no child falls behind unnoticed." },
 ];
 
-const QUICK_LINKS    = ["Gallery","Events","Contact Us","Programs","Admission"];
-const ACADEMIC_LINKS = ["Pre-School","Lower Primary","Upper Primary","Junior Secondary"];
-
 // ─── STAGE CARD ──────────────────────────────────────────────────────────────
 
 function StageCard({ stage, index }) {
@@ -154,7 +153,6 @@ function StageCard({ stage, index }) {
             <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
             <p className="text-gray-600 font-sans text-base leading-relaxed mb-8">{stage.description}</p>
 
-            {/* Subjects */}
             <div className={`rounded-xl border-l-4 ${stage.accent} ${stage.tagBg} p-6 mb-6`}>
               <h4 className="text-sm font-black uppercase tracking-wide text-green-800 mb-4 font-sans">
                 Subjects Covered
@@ -168,7 +166,6 @@ function StageCard({ stage, index }) {
               </div>
             </div>
 
-            {/* Expandable */}
             <button onClick={() => setOpen(!open)}
               className="flex items-center gap-2 text-green-700 font-bold text-sm font-sans
                          hover:text-green-900 transition-colors duration-200 bg-transparent
@@ -222,29 +219,24 @@ function StageCard({ stage, index }) {
   );
 }
 
-// ─── MAIN PAGE ────────────────────────────────────────────────────────────────
+// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function Academics() {
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
-
-      {/* Shared Navbar */}
       <Navbar />
 
-      {/* Hero Banner */}
+      {/* ── HERO BANNER ── */}
       <div className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-[70px] overflow-hidden">
         <div className="absolute inset-0 opacity-10"
              style={{ backgroundImage:"repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize:"28px 28px" }} />
         <div className="absolute inset-0 bg-black/30" />
-
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-24">
-          {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-white/60 text-sm font-sans mb-6">
             <Link to="/" className="hover:text-white transition-colors no-underline text-white/60">Home</Link>
             <span className="text-yellow-400">›</span>
             <span className="text-yellow-400 font-semibold">Academics</span>
           </div>
-
           <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-3 font-sans">
             Our Curriculum
           </p>
@@ -257,8 +249,6 @@ export default function Academics() {
             framework — building confident, curious, and capable young people from Pre-School
             all the way through Junior Secondary.
           </p>
-
-          {/* Quick jump pills */}
           <div className="flex flex-wrap gap-3 mt-10">
             {STAGES.map((s) => (
               <a key={s.id} href={`#${s.id}`}
@@ -271,8 +261,6 @@ export default function Academics() {
             ))}
           </div>
         </div>
-
-        {/* Wave bottom */}
         <div className="relative h-12 overflow-hidden">
           <svg viewBox="0 0 1440 48" className="absolute bottom-0 w-full" preserveAspectRatio="none">
             <path d="M0,48 L0,24 Q360,0 720,24 Q1080,48 1440,24 L1440,48 Z" fill="white" />
@@ -280,19 +268,23 @@ export default function Academics() {
         </div>
       </div>
 
-      {/* Stage Cards */}
+      {/* ── STAGE CARDS ── */}
       <div className="bg-white">
         {STAGES.map((stage, index) => (
           <StageCard key={stage.id} stage={stage} index={index} />
         ))}
       </div>
 
-      {/* Teaching Approach */}
+      {/* ── TEACHING APPROACH ── */}
       <section className="py-20 px-6 bg-green-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-2 font-sans">How We Teach</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">Our Teaching Approach</h2>
+            <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-2 font-sans">
+              How We Teach
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              Our Teaching Approach
+            </h2>
             <div className="w-14 h-1 bg-yellow-400 rounded mx-auto" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -310,7 +302,7 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="py-20 px-6 bg-gradient-to-br from-yellow-400 to-yellow-500">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-5xl mb-4">🏫</div>
@@ -338,53 +330,8 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-green-950 border-t border-white/10 pt-16 px-6 pb-0">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-3">Kefjoy Academy & Cradle</h3>
-            <p className="text-sm text-white/60 font-sans leading-relaxed">
-              A Christian-based centre striving to develop whole, balanced minds in children.
-              Our Integrated Special Unit ensures every child's potential is unlocked.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Quick Links</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {QUICK_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to={`/${l.toLowerCase().replace(/ /g,"-")}`}
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Academics</h4>
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {ACADEMIC_LINKS.map((l) => (
-                <li key={l}>
-                  <Link to="/academics"
-                     className="text-sm text-white/60 font-sans no-underline transition-all duration-200
-                                hover:text-yellow-400 hover:pl-1">{l}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[2px] text-yellow-400 mb-4 font-sans">Get In Touch</h4>
-            <div className="text-sm text-white/60 font-sans leading-8">
-              <p>📍 Nairobi, Kenya</p>
-              <p>📞 +254 700 000 000</p>
-              <p>✉️ <a href="mailto:info@kefjoyacademy.sc.ke" className="text-yellow-400 no-underline hover:underline">info@kefjoyacademy.sc.ke</a></p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-white/10 py-5 text-center text-xs text-white/35 font-sans">
-          Copyright © Kefjoy Academy & Cradle 2026. All Rights Reserved.
-        </div>
-      </footer>
+      {/* ── FOOTER ── */}
+      <Footer />
 
       {/* Scroll to top */}
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
