@@ -5,13 +5,6 @@ import Footer from "./Footer";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const CONTACT_CARDS = [
-  { icon: "📍", title: "Our Location",  lines: ["P.O. Box 00100", "Nairobi, Kenya"],                                          bg: "bg-green-50",  border: "border-green-500" },
-  { icon: "📞", title: "Call Us",       lines: ["+254 700 000 000", "+254 011 000 0000"],                                     bg: "bg-yellow-50", border: "border-yellow-400" },
-  { icon: "✉️", title: "Email Us",      lines: ["info@kefjoyacademy.sc.ke", "admissions@kefjoyacademy.sc.ke"],                bg: "bg-blue-50",   border: "border-blue-400" },
-  { icon: "🕐", title: "Opening Hours", lines: ["Mon – Fri: 7:30 AM – 5:00 PM", "Sat: 9:00 AM – 12:00 PM", "Sun: Closed"],   bg: "bg-purple-50", border: "border-purple-400" },
-];
-
 const FAQS = [
   { q: "What are the school's operating hours?",      a: "We are open Monday to Friday from 7:30 AM to 5:00 PM, and Saturday from 9:00 AM to 12:00 PM." },
   { q: "How do I apply for admission?",               a: "Visit our Admission page to download the application form or contact us directly and we'll guide you through the process." },
@@ -210,25 +203,6 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* ── CONTACT CARDS ── */}
-      <section className="py-14 px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CONTACT_CARDS.map((card) => (
-            <div key={card.title}
-                 className={`${card.bg} border-l-4 ${card.border} rounded-xl p-6
-                              shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}>
-              <div className="text-4xl mb-3">{card.icon}</div>
-              <h3 className="text-base font-black uppercase tracking-wide text-green-900 mb-3 font-sans">
-                {card.title}
-              </h3>
-              {card.lines.map((line) => (
-                <p key={line} className="text-sm text-gray-600 font-sans leading-7">{line}</p>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── FORM + MAP ── */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -264,6 +238,7 @@ export default function Contact() {
               </p>
             </div>
 
+    
             {/* Social links */}
             <div className="bg-green-900 rounded-2xl p-7 text-white">
               <h3 className="text-lg font-bold mb-1">Follow Kefjoy Academy</h3>
@@ -272,10 +247,10 @@ export default function Contact() {
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "Facebook",  icon: "f",  color: "bg-blue-600",  href: "https://www.facebook.com/KefjoyA/" },
-                  { label: "Instagram", icon: "ig", color: "bg-pink-600",  href: "https://www.instagram.com/kefjoyacademy/" },
-                  { label: "Twitter/X", icon: "𝕏",  color: "bg-gray-800", href: "#" },
-                  { label: "YouTube",   icon: "▶",  color: "bg-red-600",   href: "https://youtube.com/@kefjoyacademy" },
+                  { label: "Facebook",  icon: "f",  color: "bg-white-600",  href: "https://www.facebook.com/KefjoyA/" },
+                  { label: "Instagram", icon: "ig", color: "bg-black-600",  href: "https://www.instagram.com/kefjoyacademy/" },
+                  { label: "Twitter/X", icon: "𝕏",  color: "bg-grey-800", href: "#" },
+                  { label: "YouTube",   icon: "▶",  color: "bg-grey-600",   href: "https://youtube.com/@kefjoyacademy" },
                 ].map((s) => (
                   <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
                      className={`${s.color} flex items-center gap-3 px-4 py-3 rounded-xl no-underline

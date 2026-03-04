@@ -13,11 +13,11 @@ const STEPS = [
 ];
 
 const FAQS = [
-  { q: "What is the student admission process?",                  open: true,  a: "Contact our Admissions team via info@kefjoyacademy.sc.ke. Upon answering your questions and arranging a campus visit, we will provide you with the necessary application forms. Once we receive a completed application and the application fee is paid, we will review and communicate our decision to you." },
-  { q: "Does Kefjoy Academy practice selective entry?",           open: false, a: "We are a non-selective school that believes in opportunity for all children. We do not offer or deny enrolment based on previous academic achievement. If we believe a child has Special Education Needs (SEN), we will work with parents to develop an Individual Education Plan (IEP) to support those unique needs." },
+  { q: "What is the student admission process?",                       open: true,  a: "Contact our Admissions team via info@kefjoyacademy.sc.ke. Upon answering your questions and arranging a campus visit, we will provide you with the necessary application forms. Once we receive a completed application and the application fee is paid, we will review and communicate our decision to you." },
+  { q: "Does Kefjoy Academy practice selective entry?",                open: false, a: "We are a non-selective school that believes in opportunity for all children. We do not offer or deny enrolment based on previous academic achievement. If we believe a child has Special Education Needs (SEN), we will work with parents to develop an Individual Education Plan (IEP) to support those unique needs." },
   { q: "Does Kefjoy Academy accept applications throughout the year?", open: false, a: "Yes, you can apply for entry at any point in the school year and may join our school at any time. We assess prior learning before deciding whether we can best meet your child's needs." },
-  { q: "How is year level placement determined?",                 open: false, a: "In most circumstances, a child will enter their age-appropriate year level. In special circumstances we will consider placing a child in a year level above or below. Please alert the school upon application if you wish your child to be considered for a different level." },
-  { q: "What documents are required for admission?",              open: false, a: "You will need the child's birth certificate, previous school report cards (if applicable), immunization records, passport photos, and a completed application form. Our admissions team will guide you through the full requirements." },
+  { q: "How is year level placement determined?",                      open: false, a: "In most circumstances, a child will enter their age-appropriate year level. In special circumstances we will consider placing a child in a year level above or below. Please alert the school upon application if you wish your child to be considered for a different level." },
+  { q: "What documents are required for admission?",                   open: false, a: "You will need the child's birth certificate, previous school report cards (if applicable), immunization records, passport photos, and a completed application form. Our admissions team will guide you through the full requirements." },
 ];
 
 const LEVELS = [
@@ -27,30 +27,31 @@ const LEVELS = [
   { title: "Junior Secondary", age: "Ages 12 – 14", icon: "🎓", href: "/academics#junior-secondary" },
 ];
 
-const WHY = [
-  { icon: "🌟", title: "Christian Values",        desc: "A faith-based environment nurturing spiritual growth alongside academic excellence." },
-  { icon: "🧩", title: "Integrated Special Unit", desc: "Dedicated support ensuring every child's potential is unlocked regardless of their needs." },
-  { icon: "🌍", title: "Holistic Development",    desc: "Academics, arts, sports and character all woven into our daily programme." },
-  { icon: "👨‍🏫", title: "Experienced Educators",  desc: "Passionate teachers committed to each child's unique journey of growth." },
-];
-
 // ─── FAQ ITEM ─────────────────────────────────────────────────────────────────
 
 function FaqItem({ faq }) {
   const [open, setOpen] = useState(faq.open);
   return (
-    <div className="border border-gray-200 rounded-xl overflow-hidden">
+    <div className={`rounded-2xl overflow-hidden transition-all duration-300
+                     ${open ? "shadow-md border-green-200" : "shadow-sm border-gray-100"} border`}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-5 bg-white text-left
-                   cursor-pointer transition-colors duration-200 hover:bg-green-50 focus:outline-none"
+        className={`w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer
+                   transition-all duration-200 focus:outline-none
+                   ${open ? "bg-green-900" : "bg-white hover:bg-green-50"}`}
       >
-        <span className="font-semibold text-green-900 text-base font-sans pr-4">{faq.q}</span>
-        <span className={`text-green-700 text-xl font-bold transition-transform duration-300 flex-shrink-0
-                         ${open ? "rotate-45" : ""}`}>+</span>
+        <span className={`font-semibold text-sm font-sans pr-4 leading-snug
+                         ${open ? "text-white" : "text-green-900"}`}>
+          {faq.q}
+        </span>
+        <span className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-black
+                         flex-shrink-0 transition-all duration-300
+                         ${open ? "bg-yellow-400 text-green-900 rotate-45" : "bg-green-100 text-green-700"}`}>
+          +
+        </span>
       </button>
       {open && (
-        <div className="px-6 pb-5 bg-green-50 border-t border-gray-100">
+        <div className="px-6 pb-5 bg-green-50 border-t border-green-100">
           <p className="text-sm text-gray-600 font-sans leading-relaxed pt-4">{faq.a}</p>
         </div>
       )}
@@ -75,14 +76,17 @@ export default function Admission() {
       <Navbar />
 
       {/* ── PAGE HERO ── */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-900
-                          flex items-center justify-center overflow-hidden min-h-[340px]">
+      <section className="relative pt-32 pb-24 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-900
+                          flex items-center justify-center overflow-hidden min-h-[380px]">
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 opacity-10"
              style={{ backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "30px 30px" }} />
+        <div className="absolute top-10 right-20 w-64 h-64 rounded-full bg-yellow-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-48 h-48 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+
         <div className="relative z-10 text-center text-white max-w-3xl mx-auto">
-          <div className="flex items-center justify-center gap-2 text-xs font-sans text-white/60 mb-4 uppercase tracking-widest">
-            <Link to="/" className="hover:text-yellow-400 transition-colors no-underline text-white/60">Home</Link>
+          <div className="flex items-center justify-center gap-2 text-xs font-sans text-white/50 mb-5 uppercase tracking-widest">
+            <Link to="/" className="hover:text-yellow-400 transition-colors no-underline text-white/50">Home</Link>
             <span>›</span>
             <span className="text-yellow-400">Admission</span>
           </div>
@@ -90,15 +94,197 @@ export default function Admission() {
                            tracking-[3px] uppercase px-5 py-1.5 rounded-full mb-5 font-sans">
             Join Our Community
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">Admissions</h1>
-          <p className="mt-4 text-base md:text-lg text-white/80 font-sans font-light max-w-xl mx-auto leading-relaxed">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg mb-4">Admissions</h1>
+          <p className="text-base md:text-lg text-white/75 font-sans font-light max-w-xl mx-auto leading-relaxed">
             We're delighted you're considering Kefjoy Academy for your child. Here's everything you need to know to get started.
           </p>
+          <div className="flex items-center justify-center gap-4 mt-8 flex-wrap">
+            <a href="#enquiry"
+               className="bg-yellow-400 text-green-900 px-7 py-3 rounded font-black text-xs uppercase
+                          tracking-wide font-sans no-underline transition-all duration-200
+                          hover:bg-yellow-300 hover:-translate-y-0.5 shadow-[0_4px_15px_rgba(240,192,64,0.35)]">
+              Apply Now →
+            </a>
+            <a href="#process"
+               className="border-2 border-white/40 text-white px-7 py-3 rounded font-black text-xs
+                          uppercase tracking-wide font-sans no-underline transition-all duration-200
+                          hover:border-white hover:bg-white/10">
+              View Process
+            </a>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 48" className="w-full" preserveAspectRatio="none">
+            <path d="M0,48 L0,24 Q360,0 720,24 Q1080,48 1440,24 L1440,48 Z" fill="white" />
+          </svg>
+        </div>
+      </section>
+
+      {/* ── FORM (left) + FAQs (right) ── */}
+      <section id="enquiry" className="py-20 px-6 bg-white scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="mb-12">
+            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Get In Touch</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-green-900 leading-tight">
+              We'd Love to Hear From You
+            </h2>
+            <div className="w-14 h-1 bg-yellow-400 rounded mt-4" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+            {/* ── LEFT: Enquiry Form — dark green card ── */}
+            <div className="bg-green-900 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
+              <div className="absolute -bottom-16 -left-12 w-56 h-56 bg-yellow-400/10 rounded-full pointer-events-none" />
+
+              <div className="relative z-10">
+                <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-1 font-sans">Admissions Enquiry</p>
+                <h3 className="text-2xl font-bold text-white mb-1">Contact Our Team</h3>
+                <p className="text-white/55 text-sm font-sans mb-5">Fill in the form and we'll be in touch within 1–2 business days.</p>
+                <div className="w-10 h-1 bg-yellow-400 rounded mb-7" />
+
+                {submitted ? (
+                  <div className="flex flex-col items-center justify-center py-14 text-center">
+                    <div className="w-20 h-20 rounded-full bg-yellow-400 flex items-center justify-center text-4xl mb-5 shadow-lg">🎉</div>
+                    <h3 className="text-2xl font-bold text-white mb-3">Thank You!</h3>
+                    <p className="text-white/65 font-sans leading-relaxed max-w-xs mb-7 text-sm">
+                      We've received your enquiry and will be in touch within 1–2 business days.
+                    </p>
+                    <button onClick={() => setSubmitted(false)}
+                      className="bg-yellow-400 text-green-900 px-6 py-3 rounded-lg font-black text-xs
+                                 uppercase tracking-wide font-sans border-none cursor-pointer
+                                 hover:bg-yellow-300 transition-all duration-200">
+                      Submit Another Enquiry
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        { name: "parentName", label: "Parent's Name",  placeholder: "e.g. Jane Doe",    required: true },
+                        { name: "phone",      label: "Contact Number", placeholder: "+254 700 000 000", required: true },
+                      ].map((f) => (
+                        <div key={f.name} className="flex flex-col gap-1.5">
+                          <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                            {f.label} {f.required && <span className="text-yellow-400">*</span>}
+                          </label>
+                          <input name={f.name} value={form[f.name]} onChange={handleChange}
+                                 required={f.required} placeholder={f.placeholder}
+                                 className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                            text-white placeholder-white/35 focus:outline-none focus:border-yellow-400
+                                            focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200" />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                        Email Address <span className="text-yellow-400">*</span>
+                      </label>
+                      <input name="email" type="email" value={form.email} onChange={handleChange} required
+                             placeholder="e.g. parent@email.com"
+                             className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                        text-white placeholder-white/35 focus:outline-none focus:border-yellow-400
+                                        focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200" />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                          Child's Name <span className="text-yellow-400">*</span>
+                        </label>
+                        <input name="childName" value={form.childName} onChange={handleChange} required
+                               placeholder="e.g. John Doe"
+                               className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                          text-white placeholder-white/35 focus:outline-none focus:border-yellow-400
+                                          focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200" />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                          Child's Age <span className="text-yellow-400">*</span>
+                        </label>
+                        <select name="childAge" value={form.childAge} onChange={handleChange} required
+                                className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                           text-white focus:outline-none focus:border-yellow-400
+                                           focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200">
+                          <option value="" className="text-gray-800">Select age</option>
+                          {Array.from({ length: 16 }, (_, i) => i + 2).map((age) => (
+                            <option key={age} value={age} className="text-gray-800">{age} years old</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                        Current School
+                      </label>
+                      <input name="currentSchool" value={form.currentSchool} onChange={handleChange}
+                             placeholder="e.g. ABC Primary School (or 'N/A' if new)"
+                             className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                        text-white placeholder-white/35 focus:outline-none focus:border-yellow-400
+                                        focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200" />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-black uppercase tracking-wide text-white/65 font-sans">
+                        Additional Message
+                      </label>
+                      <textarea name="message" value={form.message} onChange={handleChange} rows={3}
+                                placeholder="Any questions or special requirements..."
+                                className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm font-sans
+                                           text-white placeholder-white/35 focus:outline-none focus:border-yellow-400
+                                           focus:ring-2 focus:ring-yellow-400/20 transition-all duration-200 resize-none" />
+                    </div>
+
+                    <button type="submit"
+                      className="mt-2 w-full bg-yellow-400 text-green-900 px-8 py-4 rounded-xl font-black text-sm
+                                 uppercase tracking-wide font-sans transition-all duration-200 cursor-pointer
+                                 border-none hover:bg-yellow-300 hover:-translate-y-0.5
+                                 shadow-[0_4px_20px_rgba(240,192,64,0.35)]">
+                      Register Enquiry →
+                    </button>
+                    <p className="text-white/35 text-xs font-sans text-center mt-1">
+                      We respond within 1–2 business days
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+
+            {/* ── RIGHT: FAQs ── */}
+            <div className="flex flex-col gap-5">
+              <div>
+                <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Common Questions</p>
+                <h3 className="text-3xl font-bold text-green-900 mb-2 leading-tight">Frequently Asked Questions</h3>
+                <p className="text-gray-500 font-sans text-sm leading-relaxed mb-5">
+                  Can't find what you're looking for? Use the form to send us your question directly.
+                </p>
+                <div className="w-10 h-1 bg-yellow-400 rounded mb-6" />
+              </div>
+
+              <div className="flex flex-col gap-3">
+                {FAQS.map((faq) => <FaqItem key={faq.q} faq={faq} />)}
+              </div>
+
+              {/* quick contact strip */}
+              <div className="mt-2 bg-green-50 border border-green-100 rounded-2xl p-5 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-green-900 flex items-center justify-center text-xl flex-shrink-0">📞</div>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-wide text-green-800 font-sans mb-0.5">Prefer to call?</p>
+                  <p className="text-sm text-gray-600 font-sans">Reach our admissions team directly at <strong className="text-green-800">+254 700 000 000</strong></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── ADMISSION STEPS ── */}
-      <section id="process" className="py-20 px-6 bg-white scroll-mt-20">
+      <section id="process" className="py-20 px-6 bg-gray-50 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">How To Apply</p>
           <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Admission Process</h2>
@@ -124,139 +310,7 @@ export default function Admission() {
         </div>
       </section>
 
-      {/* ── FAQ + FORM ── */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-
-          {/* FAQs */}
-          <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Common Questions</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4 leading-tight">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-14 h-1 bg-yellow-400 rounded mb-8" />
-            <div className="flex flex-col gap-3">
-              {FAQS.map((faq) => <FaqItem key={faq.q} faq={faq} />)}
-            </div>
-          </div>
-
-          {/* Enquiry Form */}
-          <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Get In Touch</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4 leading-tight">
-              Contact Our Admissions Team
-            </h2>
-            <div className="w-14 h-1 bg-yellow-400 rounded mb-8" />
-
-            {submitted ? (
-              <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
-                <div className="text-5xl mb-4">🎉</div>
-                <h3 className="text-2xl font-bold text-green-900 mb-3">Thank You!</h3>
-                <p className="text-gray-600 font-sans leading-relaxed">
-                  We've received your enquiry and our admissions team will be in touch within 1–2 business days.
-                </p>
-                <button onClick={() => setSubmitted(false)}
-                  className="mt-6 bg-yellow-400 text-green-900 px-6 py-3 rounded font-black text-sm
-                             uppercase tracking-wide font-sans hover:bg-yellow-300 transition-colors
-                             duration-200 cursor-pointer border-none">
-                  Submit Another Enquiry
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}
-                    className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    { name: "parentName", label: "Parent's Name",   placeholder: "e.g. Jane Doe",         required: true },
-                    { name: "phone",      label: "Contact Number",  placeholder: "+254 700 000 000",       required: true },
-                  ].map((f) => (
-                    <div key={f.name} className="flex flex-col gap-1.5">
-                      <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                        {f.label} {f.required && <span className="text-red-500">*</span>}
-                      </label>
-                      <input name={f.name} value={form[f.name]} onChange={handleChange}
-                             required={f.required} placeholder={f.placeholder}
-                             className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                        focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                        transition-all duration-200 text-gray-700" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                    Email Address <span className="text-red-500">*</span>
-                  </label>
-                  <input name="email" type="email" value={form.email} onChange={handleChange} required
-                         placeholder="e.g. parent@email.com"
-                         className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                    focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                    transition-all duration-200 text-gray-700" />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                      Child's Name <span className="text-red-500">*</span>
-                    </label>
-                    <input name="childName" value={form.childName} onChange={handleChange} required
-                           placeholder="e.g. John Doe"
-                           className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                      focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                      transition-all duration-200 text-gray-700" />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                      Child's Age <span className="text-red-500">*</span>
-                    </label>
-                    <select name="childAge" value={form.childAge} onChange={handleChange} required
-                            className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                       focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                       transition-all duration-200 text-gray-700 bg-white">
-                      <option value="">Select age</option>
-                      {Array.from({ length: 16 }, (_, i) => i + 2).map((age) => (
-                        <option key={age} value={age}>{age} years old</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                    Current School
-                  </label>
-                  <input name="currentSchool" value={form.currentSchool} onChange={handleChange}
-                         placeholder="e.g. ABC Primary School (or 'N/A' if new to school)"
-                         className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                    focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                    transition-all duration-200 text-gray-700" />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-black uppercase tracking-wide text-green-800 font-sans">
-                    Additional Message
-                  </label>
-                  <textarea name="message" value={form.message} onChange={handleChange} rows={4}
-                            placeholder="Any questions or special requirements we should know about..."
-                            className="border border-gray-200 rounded-lg px-4 py-3 text-sm font-sans
-                                       focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100
-                                       transition-all duration-200 text-gray-700 resize-none" />
-                </div>
-
-                <button type="submit"
-                  className="mt-2 bg-yellow-400 text-green-900 px-8 py-4 rounded-lg font-black text-sm
-                             uppercase tracking-wide font-sans transition-all duration-200 cursor-pointer
-                             border-none hover:bg-yellow-300 hover:-translate-y-0.5
-                             shadow-[0_4px_15px_rgba(240,192,64,0.4)]">
-                  Register Enquiry →
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ACADEMIC LEVELS ── */}
+      {/* ── ACADEMIC LEVELS — commented out, do not remove ──
       <section id="fees" className="py-20 px-6 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Academic Levels</p>
@@ -292,26 +346,7 @@ export default function Admission() {
           </div>
         </div>
       </section>
-
-      {/* ── WHY CHOOSE US ── */}
-      <section className="py-20 px-6 bg-green-50">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Why Choose Us</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">What Sets Kefjoy Apart</h2>
-          <div className="w-14 h-1 bg-yellow-400 rounded mb-12" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WHY.map((w) => (
-              <div key={w.title}
-                   className="bg-white rounded-xl p-7 shadow-sm text-center transition-all duration-300
-                              hover:-translate-y-1 hover:shadow-lg cursor-pointer">
-                <div className="text-5xl mb-4">{w.icon}</div>
-                <h3 className="text-lg font-bold text-green-900 mb-2">{w.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500 font-sans">{w.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      ── END ACADEMIC LEVELS ── */}
 
       {/* ── CTA BANNER ── */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
