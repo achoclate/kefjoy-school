@@ -20,12 +20,12 @@ const FAQS = [
   { q: "What documents are required for admission?",                   open: false, a: "You will need the child's birth certificate, previous school report cards (if applicable), immunization records, passport photos, and a completed application form. Our admissions team will guide you through the full requirements." },
 ];
 
-const LEVELS = [
-  { title: "Pre-School",       age: "Ages 2 – 5",   icon: "🌱", href: "/academics#preschool" },
-  { title: "Lower Primary",    age: "Ages 6 – 8",   icon: "📖", href: "/academics#lower-primary" },
-  { title: "Upper Primary",    age: "Ages 9 – 11",  icon: "🔬", href: "/academics#upper-primary" },
-  { title: "Junior Secondary", age: "Ages 12 – 14", icon: "🎓", href: "/academics#junior-secondary" },
-];
+// const LEVELS = [
+//   { title: "Pre-School",       age: "Ages 2 – 5",   icon: "🌱", href: "/academics#preschool" },
+//   { title: "Lower Primary",    age: "Ages 6 – 8",   icon: "📖", href: "/academics#lower-primary" },
+//   { title: "Upper Primary",    age: "Ages 9 – 11",  icon: "🔬", href: "/academics#upper-primary" },
+//   { title: "Junior Secondary", age: "Ages 12 – 14", icon: "🎓", href: "/academics#junior-secondary" },
+// ];
 
 // ─── FAQ ITEM ─────────────────────────────────────────────────────────────────
 
