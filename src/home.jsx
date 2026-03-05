@@ -32,16 +32,16 @@ const PROGRAMS = [
   { icon: "💻", title: "Online",    desc: "Digital learning tools integrated into every classroom experience." },
 ];
 
-const CLUBS = [
-  "Drama","Choir","Art Club","Debate","Chess","Young Scientists",
-  "Dance","Environmental","Scouting","Sports Teams","Reading Club","ICT Club",
-];
+// const CLUBS = [
+//   "Drama","Choir","Art Club","Debate","Chess","Young Scientists",
+//   "Dance","Environmental","Scouting","Sports Teams","Reading Club","ICT Club",
+// ];
 
-const FACILITIES = [
-  "School Buses","Music Room","Science Laboratory","Art Room",
-  "Playing Fields","Basketball Court","Computer Lab","Counselling Room",
-  "Fully Equipped Kitchen","Library","Special Needs Unit","Prayer Room",
-];
+// const FACILITIES = [
+//   "School Buses","Music Room","Science Laboratory","Art Room",
+//   "Playing Fields","Basketball Court","Computer Lab","Counselling Room",
+//   "Fully Equipped Kitchen","Library","Special Needs Unit","Prayer Room",
+// ];
 
 const WHY_CHOOSE = [
   { icon: "🌟", title: "Christian Values",        desc: "A faith-based environment that nurtures spiritual growth alongside academic excellence." },
