@@ -380,7 +380,7 @@ export default function Admission() {
                    border-none cursor-pointer text-xl shadow-lg transition-all duration-200
                    hover:bg-green-900 hover:-translate-y-1 flex items-center justify-center">
         ↑
-      </button>
+      </button> 
     </div>
   );
 }

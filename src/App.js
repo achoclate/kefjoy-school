@@ -4,6 +4,8 @@ import Academics from "./Academics";
 import Contact   from "./contact";
 import Admission from "./admission";
 import About     from "./about";
+import StudentLife from "./StudentLife";
+
 
 function App() {
   return (
@@ -14,9 +16,7 @@ function App() {
         <Route path="/contact"   element={<Contact />} />
         <Route path="/admission" element={<Admission />} />
         <Route path="/about"     element={<About />} />
-
-        {/* <Route path="/programs"     element={<Programs />} />    */}
-        {/* <Route path="/student-life" element={<StudentLife />} /> */}
+        <Route path="/student-life" element={<StudentLife />} />
         {/* <Route path="/media"        element={<Media />} />       */}
       </Routes>
     </BrowserRouter>
