@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// DATA
 
 const VALUES = [
   { icon: "🤝", title: "Inclusivity",  desc: "Every child is welcome regardless of background, ability or need." },
@@ -46,14 +46,14 @@ const STATS = [
   { number: "100%", label: "Christian-Based Environment",  icon: "🙏" },
 ];
 
-// ─── COMPONENT ───────────────────────────────────────────────────────────────
+// MAIN COMPONENT 
 
 export default function About() {
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── PAGE HERO ── */}
+      {/* HERO */}
       <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-900
                           flex items-center justify-center overflow-hidden min-h-[340px]">
         <div className="absolute inset-0 bg-black/30" />
@@ -81,7 +81,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── WHO WE ARE ── */}
+      {/* WHO WE ARE */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
@@ -136,7 +136,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── OUR HISTORY / TIMELINE ── */}
+      {/* OUR HISTORY- TIMELINE */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">All About</p>
@@ -172,7 +172,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── OUR VALUES ── */}
+      {/* OUR VALUES */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">These Are</p>
@@ -192,7 +192,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── MOTTO BANNER ── */}
+      {/* MOTTO BANNER */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-16 px-6 text-center text-white">
         <p className="text-xs font-black tracking-[3px] uppercase text-yellow-400 mb-4 font-sans">Our Motto</p>
         <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto">
@@ -204,7 +204,7 @@ export default function About() {
         </p>
       </div>
 
-      {/* ── OUR TEAM ── */}
+      {/* OUR TEAM */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Our</p>
@@ -237,7 +237,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── WHY TRUST US ── */}
+      {/* WHY TRUST US */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
@@ -278,7 +278,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
+      {/* CTA BANNER */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Join Our Family?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
@@ -301,7 +301,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* ── FOOTER ── */}
       <Footer />
 
       {/* Scroll to top */}

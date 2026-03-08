@@ -5,6 +5,7 @@ import Contact   from "./contact";
 import Admission from "./admission";
 import About     from "./about";
 import StudentLife from "./StudentLife";
+import Media from "./Media";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route path="/admission" element={<Admission />} />
         <Route path="/about"     element={<About />} />
         <Route path="/student-life" element={<StudentLife />} />
-        {/* <Route path="/media"        element={<Media />} />       */}
+        <Route path="/media"        element={<Media />} />      
       </Routes>
     </BrowserRouter>
   );

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// DATA
 
 const CLUBS = [
   {
@@ -182,7 +182,7 @@ const SECTIONS = [
   { id: "counseling", label: "Guidance & Counselling", icon: "💛" },
 ];
 
-// ─── CLUB CARD ────────────────────────────────────────────────────────────────
+// CLUB CARD
 function ClubCard({ club }) {
   const [open, setOpen] = useState(false);
   return (
@@ -240,7 +240,7 @@ function ClubCard({ club }) {
   );
 }
 
-// ─── SPORT CARD ───────────────────────────────────────────────────────────────
+// SPORT CARD 
 function SportCard({ sport }) {
   return (
     <div className="bg-white border border-gray-100 border-l-4 border-l-green-700 rounded-2xl overflow-hidden shadow-sm
@@ -277,7 +277,7 @@ function SportCard({ sport }) {
   );
 }
 
-// ─── COUNSELLING CARD ─────────────────────────────────────────────────────────
+// COUNSELLING CARD 
 function CounsellingCard({ item }) {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm
@@ -300,12 +300,12 @@ function CounsellingCard({ item }) {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+// MAIN COMPONENT 
 export default function StudentLife() {
   const [activeSection, setActiveSection] = useState("clubs");
   const location = useLocation();
 
-  // Auto-scroll and activate section from URL hash (e.g. /student-life#sports)
+  // Auto-scroll and activate section 
   useEffect(() => {
     const hash = location.hash.replace("#", "");
     const valid = SECTIONS.map(s => s.id);
@@ -330,7 +330,7 @@ export default function StudentLife() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO ── */}
+      {/*  HERO  */}
       <section className="relative pt-32 pb-0 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-950
                           overflow-hidden min-h-[420px] flex items-end">
         <div className="absolute inset-0 bg-black/25" />
@@ -358,7 +358,7 @@ export default function StudentLife() {
             Explore our vibrant community of clubs, sports, and pastoral care.
           </p>
 
-          {/* ── Section Tab Nav ── */}
+          {/* Tab Nav */}
           <div className="flex flex-wrap gap-2">
             {SECTIONS.map((s) => (
               <button
@@ -378,7 +378,7 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* ── CLUBS ── */}
+      {/* CLUBS  */}
       <section id="clubs" className="py-20 px-6 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -397,7 +397,7 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* ── SPORTS ── */}
+      {/* SPORTS */}
       <section id="sports" className="py-20 px-6 bg-gray-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -411,7 +411,7 @@ export default function StudentLife() {
             </p>
           </div>
 
-          {/* Stats strip */}
+          {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
             {[
               { value: "6+",   label: "Sports Offered" },
@@ -432,7 +432,7 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* ── GUIDANCE & COUNSELLING ── */}
+      {/* GUIDANCE & COUNSELLING  */}
       <section id="counseling" className="py-20 px-6 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -446,7 +446,7 @@ export default function StudentLife() {
             </p>
           </div>
 
-          {/* Counsellor intro banner */}
+          {/* Counsellor banner */}
           <div className="bg-gradient-to-br from-green-900 to-green-800 rounded-3xl p-8 md:p-10 mb-14
                           flex flex-col md:flex-row items-center gap-8 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none" />
@@ -476,7 +476,7 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* CTA */}
       <section className="py-20 px-6 bg-gradient-to-br from-yellow-300 to-yellow-400">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-5xl mb-4">🌟</div>
@@ -504,6 +504,8 @@ export default function StudentLife() {
       </section>
 
       <Footer />
+
+       {/* scroll to the top */}
 
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-green-700 text-white

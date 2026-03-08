@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
-
+// DATA 
 const STEPS = [
   { number: "01", title: "Get in Touch",       icon: "✉️", desc: "Contact our Admissions team via email or phone. We'll answer all your questions and arrange a campus viewing at your convenience." },
   { number: "02", title: "Campus Visit",        icon: "🏫", desc: "Tour our facilities, meet our teachers, and get a feel for the Kefjoy learning environment. We'd love to show you around!" },
@@ -20,14 +19,7 @@ const FAQS = [
   { q: "What documents are required for admission?",                   open: false, a: "You will need the child's birth certificate, previous school report cards (if applicable), immunization records, passport photos, and a completed application form. Our admissions team will guide you through the full requirements." },
 ];
 
-// const LEVELS = [
-//   { title: "Pre-School",       age: "Ages 2 – 5",   icon: "🌱", href: "/academics#preschool" },
-//   { title: "Lower Primary",    age: "Ages 6 – 8",   icon: "📖", href: "/academics#lower-primary" },
-//   { title: "Upper Primary",    age: "Ages 9 – 11",  icon: "🔬", href: "/academics#upper-primary" },
-//   { title: "Junior Secondary", age: "Ages 12 – 14", icon: "🎓", href: "/academics#junior-secondary" },
-// ];
-
-// ─── FAQ ITEM ─────────────────────────────────────────────────────────────────
+// FAQ ITEM
 
 function FaqItem({ faq }) {
   const [open, setOpen] = useState(faq.open);
@@ -59,8 +51,7 @@ function FaqItem({ faq }) {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
-
+// MAIN COMPONENT
 export default function Admission() {
   const [form, setForm] = useState({
     parentName: "", phone: "", email: "",
@@ -75,7 +66,7 @@ export default function Admission() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── PAGE HERO ── */}
+      {/* HERO */}
       <section className="relative pt-32 pb-24 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-900
                           flex items-center justify-center overflow-hidden min-h-[380px]">
         <div className="absolute inset-0 bg-black/30" />
@@ -120,7 +111,7 @@ export default function Admission() {
         </div>
       </section>
 
-      {/* ── FORM (left) + FAQs (right) ── */}
+      {/* FORM + FAQs  */}
       <section id="enquiry" className="py-20 px-6 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto">
 
@@ -134,7 +125,7 @@ export default function Admission() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
-            {/* ── LEFT: Enquiry Form — dark green card ── */}
+            {/* Enquiry Form */}
             <div className="bg-green-900 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
               <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
               <div className="absolute -bottom-16 -left-12 w-56 h-56 bg-yellow-400/10 rounded-full pointer-events-none" />
@@ -254,7 +245,7 @@ export default function Admission() {
               </div>
             </div>
 
-            {/* ── RIGHT: FAQs ── */}
+            {/* FAQs */}
             <div className="flex flex-col gap-5">
               <div>
                 <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Common Questions</p>
@@ -283,7 +274,7 @@ export default function Admission() {
         </div>
       </section>
 
-      {/* ── ADMISSION STEPS ── */}
+      {/*  ADMISSION STEPS */}
       <section id="process" className="py-20 px-6 bg-gray-50 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">How To Apply</p>
@@ -310,45 +301,7 @@ export default function Admission() {
         </div>
       </section>
 
-      {/* ── ACADEMIC LEVELS — commented out, do not remove ──
-      <section id="fees" className="py-20 px-6 bg-white scroll-mt-20">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Academic Levels</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Choose Your Level</h2>
-          <div className="w-14 h-1 bg-yellow-400 rounded mb-12" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEVELS.map((level) => (
-              <div key={level.title}
-                   className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm
-                              hover:shadow-lg transition-all duration-300 hover:-translate-y-1
-                              text-center flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-green-50 border-2 border-green-100
-                                flex items-center justify-center text-3xl mb-4">{level.icon}</div>
-                <h3 className="text-lg font-bold text-green-900 mb-1">{level.title}</h3>
-                <p className="text-xs text-green-600 font-sans font-semibold tracking-wide uppercase mb-5">
-                  {level.age}
-                </p>
-                <div className="flex flex-col gap-2 w-full mt-auto">
-                  <Link to={level.href}
-                     className="block w-full text-center bg-green-900 text-white px-4 py-2.5
-                                rounded-lg text-xs font-black uppercase tracking-wide font-sans
-                                no-underline transition-all duration-200 hover:bg-green-700">
-                    Get Details
-                  </Link>
-                  <button className="w-full bg-yellow-400 text-green-900 px-4 py-2.5 rounded-lg
-                                     text-xs font-black uppercase tracking-wide font-sans border-none
-                                     cursor-pointer transition-all duration-200 hover:bg-yellow-300">
-                    Fee Structure
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      ── END ACADEMIC LEVELS ── */}
-
-      {/* ── CTA BANNER ── */}
+      {/* CTA BANNER*/}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Take the Next Step?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
@@ -371,7 +324,6 @@ export default function Admission() {
         </div>
       </div>
 
-      {/* ── FOOTER ── */}
       <Footer />
 
       {/* Scroll to top */}

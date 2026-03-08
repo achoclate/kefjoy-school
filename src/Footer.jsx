@@ -24,12 +24,12 @@ const SOCIAL_LINKS = [
   { label: "yt", name: "YouTube",   href: "https://youtube.com/@kefjoyacademy" },
 ];
 
-// ─── COMPONENT ───────────────────────────────────────────────────────────────
+//  COMPONENT 
 
 export default function Footer() {
   return (
     <>
-      {/* ── SOCIAL / CONTACT BAR ── */}
+      {/* SOCIAL BAR  */}
       <div className="bg-green-950 py-14 px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap gap-12 items-start justify-between">
 
@@ -79,11 +79,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── MAIN FOOTER ── */}
+      {/* MAIN FOOTER */}
       <footer className="bg-green-950 border-t border-white/10 pt-16 px-6 pb-0">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Brand */}
+          {/* school brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 no-underline mb-4">
               <div className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center

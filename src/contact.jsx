@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// DATA
 
 const FAQS = [
   { q: "What are the school's operating hours?",      a: "We are open Monday to Friday from 7:30 AM to 5:00 PM, and Saturday from 9:00 AM to 12:00 PM." },
@@ -14,8 +14,7 @@ const FAQS = [
   { q: "Can I visit the school before enrolling?",    a: "Absolutely! We welcome school visits. Please book an appointment so we can give you a proper guided tour." },
 ];
 
-// ─── FAQ ITEM ─────────────────────────────────────────────────────────────────
-
+// FAQ ITEM
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
@@ -44,8 +43,7 @@ function FAQItem({ question, answer }) {
   );
 }
 
-// ─── CONTACT FORM ─────────────────────────────────────────────────────────────
-
+// CONTACT FORM
 function ContactForm() {
   const [form, setForm]       = useState({ name: "", subject: "", phone: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -168,14 +166,14 @@ function ContactForm() {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+//  MAIN COMPONENT
 
 export default function Contact() {
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO BANNER ── */}
+      {/* HERO BANNER */}
       <div className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-[70px] overflow-hidden">
         <div className="absolute inset-0 opacity-10"
              style={{ backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "28px 28px" }} />
@@ -203,7 +201,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* ── FORM + MAP ── */}
+      {/* FORM + MAP */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
 
@@ -267,7 +265,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── FAQ STRIP ── */}
+      {/* FAQ STRIP */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -283,7 +281,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
       <Footer />
 
       {/* Scroll to top */}

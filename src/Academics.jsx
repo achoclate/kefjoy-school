@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+//  DATA
 
 const STAGES = [
   {
@@ -104,7 +104,7 @@ const APPROACH_CARDS = [
   { icon: "📊", title: "Continuous Assessment", desc: "Regular formative and summative assessments ensure no child falls behind unnoticed." },
 ];
 
-// ─── STAGE DETAIL (expanded panel) ───────────────────────────────────────────
+// STAGE DETAIL ; expanded panel
 
 function StageDetail({ stage, onClose }) {
   const isEven = STAGES.findIndex(s => s.id === stage.id) % 2 === 0;
@@ -113,7 +113,7 @@ function StageDetail({ stage, onClose }) {
       className="mt-6 rounded-2xl border border-gray-100 shadow-lg overflow-hidden bg-white relative"
       style={{ animation: "expandIn 0.35s ease forwards" }}
     >
-      {/* Floating close — top right */}
+      {/* Floating close;top right */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-red-50
@@ -206,8 +206,7 @@ function StageDetail({ stage, onClose }) {
   );
 }
 
-// ─── LEVEL SUMMARY CARD ───────────────────────────────────────────────────────
-
+// LEVEL SUMMARY CARD 
 function LevelCard({ stage, isActive, onToggle }) {
   return (
     <div id={stage.id} className="scroll-mt-24">
@@ -254,13 +253,13 @@ function LevelCard({ stage, isActive, onToggle }) {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+// MAIN COMPONENT 
 
 export default function Academics() {
   const [activeId, setActiveId] = useState(null);
   const location = useLocation();
 
-  // Auto-open stage card when navigating via hash (e.g. /academics#preschool)
+  // Auto-open stage card when navigating 
   useEffect(() => {
     const hash = location.hash.replace("#", "");
     if (hash && STAGES.find(s => s.id === hash)) {
@@ -286,7 +285,7 @@ export default function Academics() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO BANNER ── */}
+      {/* HERO */}
       <div className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-[70px] overflow-hidden">
         <div className="absolute inset-0 opacity-10"
              style={{ backgroundImage:"repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize:"28px 28px" }} />
@@ -309,7 +308,7 @@ export default function Academics() {
             framework — building confident, curious, and capable young people from Pre-School
             all the way through Junior Secondary.
           </p>
-          {/* Hero buttons — click to open that stage's detail */}
+          {/* Hero buttons */}
           <div className="flex flex-wrap gap-3 mt-10">
             {STAGES.map((s) => (
               <button
@@ -332,14 +331,14 @@ export default function Academics() {
         </div>
       </div>
 
-      {/* ── LEVEL CARDS + EXPANDED DETAIL ── */}
+      {/* LEVEL CARDS + EXPANDED DETAIL */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">Academic Levels</p>
           <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">Choose Your Level</h2>
           <div className="w-14 h-1 bg-yellow-400 rounded mb-12" />
 
-          {/* 4 summary cards */}
+          {/* level cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {STAGES.map((stage) => (
               <LevelCard
@@ -351,7 +350,7 @@ export default function Academics() {
             ))}
           </div>
 
-          {/* Expanded detail panel — appears below the 4 cards */}
+          {/* Expanded detail panel */}
           {activeStage && (
             <StageDetail
               stage={activeStage}
@@ -361,7 +360,7 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* ── TEACHING APPROACH ── */}
+      {/* TEACHING APPROACH */}
       <section className="py-20 px-6 bg-green-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
@@ -388,7 +387,7 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* CTA */}
       <section className="py-20 px-6 bg-gradient-to-br from-yellow-400 to-yellow-500">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-5xl mb-4">🏫</div>
@@ -416,7 +415,6 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
       <Footer />
 
       {/* Scroll to top */}

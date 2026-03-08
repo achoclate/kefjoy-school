@@ -20,18 +20,7 @@ const NAV_LINKS = [
     label: "About Us",
     path: "/about",
   },
-  // {
-  //   label: "Programs",
-  //   path: "/programs",
-  //   sub: [
-  //     { label: "The Arts",  path: "/programs#arts" },
-  //     { label: "Sciences",  path: "/programs#sciences" },
-  //     { label: "Maths",     path: "/programs#maths" },
-  //     { label: "Reading",   path: "/programs#reading" },
-  //     { label: "Sports",    path: "/programs#sports" },
-  //     { label: "Online",    path: "/programs#online" },
-  //   ],
-  // },
+  
   {
     label: "Admission",
     path: "/admission",
@@ -95,7 +84,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-[70px] flex items-center justify-between">
 
-          {/* ── Logo ── */}
+          {/* Logo  */}
           <Link to="/" className="flex items-center gap-3 no-underline">
             <div className="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center
                             text-green-900 font-black text-lg border-2 border-yellow-400 shrink-0">
@@ -107,7 +96,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* ── Desktop Nav Links ── */}
+          {/* Desktop Nav Links */}
           <ul className="hidden lg:flex items-center gap-1 list-none m-0 p-0">
             {NAV_LINKS.map((item) => (
               <li key={item.label} className="relative group">
@@ -143,7 +132,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* ── Hamburger ── */}
+          {/* Hamburger menu */}
           <button
             className="lg:hidden flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer z-50"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -159,7 +148,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── Mobile Menu Backdrop ── */}
+      {/* Mobile Menu Backdrop */}
       {menuOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
@@ -167,7 +156,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* ── Mobile Menu Drawer ── */}
+      {/* Mobile Menu Drawer*/}
       <div
         className={`lg:hidden fixed top-0 right-0 bottom-0 w-[80%] max-w-[320px] z-50
                     bg-green-950 shadow-2xl flex flex-col transition-transform duration-300 ease-in-out

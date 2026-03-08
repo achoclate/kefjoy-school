@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// DATA
 
 const HERO_SLIDES = [
   {
@@ -32,16 +32,6 @@ const PROGRAMS = [
   { icon: "💻", title: "Online",    desc: "Digital learning tools integrated into every classroom experience." },
 ];
 
-// const CLUBS = [
-//   "Drama","Choir","Art Club","Debate","Chess","Young Scientists",
-//   "Dance","Environmental","Scouting","Sports Teams","Reading Club","ICT Club",
-// ];
-
-// const FACILITIES = [
-//   "School Buses","Music Room","Science Laboratory","Art Room",
-//   "Playing Fields","Basketball Court","Computer Lab","Counselling Room",
-//   "Fully Equipped Kitchen","Library","Special Needs Unit","Prayer Room",
-// ];
 
 const WHY_CHOOSE = [
   { icon: "🌟", title: "Christian Values",        desc: "A faith-based environment that nurtures spiritual growth alongside academic excellence." },
@@ -50,7 +40,7 @@ const WHY_CHOOSE = [
   { icon: "👨‍🏫", title: "Experienced Educators",  desc: "Passionate teachers committed to unlocking each child's unique potential." },
 ];
 
-// ─── COMPONENT ───────────────────────────────────────────────────────────────
+// COMPONENT
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
@@ -70,7 +60,7 @@ export default function Home() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section
         id="home"
         className={`relative min-h-screen flex items-center justify-center overflow-hidden
@@ -127,25 +117,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ICON BAR — commented out, do not remove ──
-      <div className="bg-green-900 shadow-lg">
-        <div className="max-w-7xl mx-auto flex justify-center flex-wrap">
-          {PROGRAMS.map((p, i) => (
-            <Link to="/programs" key={p.title}
-              className={`flex flex-col items-center px-6 py-5 gap-2 cursor-pointer no-underline
-                         transition-all duration-200 hover:bg-yellow-400/15 min-w-[100px]
-                         ${i < PROGRAMS.length - 1 ? "border-r border-white/10" : ""}`}>
-              <span className="text-3xl">{p.icon}</span>
-              <span className="text-white/85 text-[11px] font-semibold tracking-widest uppercase font-sans">
-                {p.title}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-      ── END ICON BAR ── */}
-
-      {/* ── WHY CHOOSE US — moved right after hero/icon bar ── */}
       <section id="why" className="py-20 px-6 bg-green-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
@@ -171,7 +142,7 @@ export default function Home() {
 
 
 
-      {/* ── PROGRAMS ── */}
+      {/* PROGRAMS */}
       <section id="programs" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
@@ -201,7 +172,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
+      {/* CTA BANNER */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Enrol Your Child?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
@@ -217,44 +188,6 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* ── CLUBS & FACILITIES — commented out, do not remove ──
-      <section id="clubs" className="py-20 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
-              Extra-Curricular
-            </p>
-            <h2 className="text-4xl font-bold text-green-900 mb-4">Our Clubs</h2>
-            <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {CLUBS.map((c) => (
-                <li key={c} className="flex items-center gap-3 px-4 py-2.5 bg-green-50 rounded-md
-                                       border-l-4 border-green-700 text-sm text-gray-700 font-sans">
-                  <span className="text-green-700 font-bold text-base">+</span>{c}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
-              Infrastructure
-            </p>
-            <h2 className="text-4xl font-bold text-green-900 mb-4">Our Facilities</h2>
-            <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
-            <ul className="flex flex-col gap-2 list-none p-0 m-0">
-              {FACILITIES.map((f) => (
-                <li key={f} className="flex items-center gap-3 px-4 py-2.5 bg-green-50 rounded-md
-                                       border-l-4 border-green-700 text-sm text-gray-700 font-sans">
-                  <span className="text-green-700 font-bold text-base">+</span>{f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-      ── END CLUBS & FACILITIES ── */}
-
-      {/* ── FOOTER ── */}
       <Footer />
 
       {/* Scroll to top */}
