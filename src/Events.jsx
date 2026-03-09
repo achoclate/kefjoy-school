@@ -184,14 +184,36 @@ function EventCard({ event }) {
 export default function Events() {
   const [activeStatus, setActiveStatus] = useState("all");
 
+  // How many events to show at once — starts at 4, grows when you tap "Show More"
+  const [visibleEvents, setVisibleEvents] = useState(4);
+
+  // Controls the pulsing dots animation on the Show More button
+  const [loadingEvents, setLoadingEvents] = useState(false);
+
+  // Briefly shows the loading animation then reveals the next batch of events
+  const loadMoreEvents = () => {
+    setLoadingEvents(true);
+    setTimeout(() => {
+      setVisibleEvents(v => v + 4);
+      setLoadingEvents(false);
+    }, 600);
+  };
+
   const statusTabs = ["all", "upcoming", "ongoing", "past"];
 
-  // Filter events by the selected tab
+  // Filter events by the selected tab, then slice to however many we're showing
   const filtered = activeStatus === "all"
     ? EVENTS
     : EVENTS.filter(e => e.status === activeStatus);
 
-  // Count per tab for the badge numbers
+  // Reset back to 4 and clear any loading state when switching tabs
+  const handleTabChange = (tab) => {
+    setActiveStatus(tab);
+    setVisibleEvents(4);
+    setLoadingEvents(false);
+  };
+
+  // Count per tab for the little number badges
   const countFor = (s) => s === "all" ? EVENTS.length : EVENTS.filter(e => e.status === s).length;
 
   return (
@@ -237,11 +259,11 @@ export default function Events() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
 
-          {/* Filter tabs */}
+          {/* Filter tabs — tap one to narrow down the list */}
           <div className="flex flex-wrap gap-2 mb-10">
             {statusTabs.map((tab) => (
               <button key={tab}
-                onClick={() => setActiveStatus(tab)}
+                onClick={() => handleTabChange(tab)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black
                             uppercase tracking-wide font-sans border-none cursor-pointer
                             transition-all duration-200
@@ -257,14 +279,38 @@ export default function Events() {
             ))}
           </div>
 
-          {/* Event rows */}
+          {/* Event rows — 4 at a time, tap View More to load the rest */}
           <div className="flex flex-col gap-3">
-            {filtered.map((event) => (
+            {filtered.slice(0, visibleEvents).map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
 
-          {/* Empty state — shouldn't happen with real data but good to have */}
+          {/* Animated button — only appears when there are more events waiting */}
+          {visibleEvents < filtered.length && (
+            <div className="mt-10 flex flex-col items-center gap-4">
+              <button
+                onClick={loadMoreEvents}
+                disabled={loadingEvents}
+                className="flex items-center gap-2 px-8 py-3 rounded-full text-xs font-black uppercase
+                           tracking-wide font-sans border-2 border-green-900 text-green-900
+                           bg-transparent cursor-pointer transition-all duration-200
+                           hover:bg-green-900 hover:text-white hover:-translate-y-0.5
+                           disabled:opacity-70 disabled:cursor-not-allowed min-w-[140px] justify-center">
+                {loadingEvents ? (
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                  </span>
+                ) : (
+                  "Show More ↓"
+                )}
+              </button>
+            </div>
+          )}
+
+          {/* Empty state — just in case a filter has no matching events */}
           {filtered.length === 0 && (
             <div className="text-center py-20">
               <div className="text-5xl mb-4">📅</div>

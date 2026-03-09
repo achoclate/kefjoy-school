@@ -89,10 +89,41 @@ export default function Gallery() {
   const [lightboxIndex, setLightboxIndex]   = useState(null);
   const [mediaTab, setMediaTab]             = useState("photos");
 
+  // How many photos/videos are currently showing — starts at 6 and 4 respectively
+  const [visiblePhotos, setVisiblePhotos] = useState(6);
+  const [visibleVideos, setVisibleVideos] = useState(4);
+
+  // Controls the pulsing dots animation — turns on briefly when you tap Show More
+  const [loadingPhotos, setLoadingPhotos] = useState(false);
+  const [loadingVideos, setLoadingVideos] = useState(false);
+
+  // Briefly shows the loading animation then reveals the new content
+  const loadMorePhotos = () => {
+    setLoadingPhotos(true);
+    setTimeout(() => {
+      setVisiblePhotos(v => v + 6);
+      setLoadingPhotos(false);
+    }, 600);
+  };
+
+  const loadMoreVideos = () => {
+    setLoadingVideos(true);
+    setTimeout(() => {
+      setVisibleVideos(v => v + 4);
+      setLoadingVideos(false);
+    }, 600);
+  };
+
   // Only show photos matching the selected category filter
   const filteredPhotos = activeCategory === "All"
     ? PHOTOS
     : PHOTOS.filter(p => p.category === activeCategory);
+
+  // Reset photo count back to 6 whenever the category filter changes
+  const handleCategoryChange = (cat) => {
+    setActiveCategory(cat);
+    setVisiblePhotos(6);
+  };
 
   return (
     <div className="font-serif text-gray-800 overflow-x-hidden">
@@ -110,7 +141,7 @@ export default function Gallery() {
           <div className="flex items-center gap-2 text-xs font-sans text-white/50 mb-5 uppercase tracking-widest">
             <Link to="/" className="hover:text-yellow-400 transition-colors no-underline text-white/50">Home</Link>
             <span>›</span>
-            <Link to="/media" className="hover:text-yellow-400 transition-colors no-underline text-white/50">Media</Link>
+            <Link to="/media/gallery" className="hover:text-yellow-400 transition-colors no-underline text-white/50">Media</Link>
             <span>›</span>
             <span className="text-yellow-400">Gallery</span>
           </div>
@@ -159,7 +190,7 @@ export default function Gallery() {
               <div className="flex flex-wrap gap-2">
                 {CATEGORIES.map((cat) => (
                   <button key={cat}
-                    onClick={() => setActiveCategory(cat)}
+                    onClick={() => handleCategoryChange(cat)}
                     className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wide
                                 font-sans border-none cursor-pointer transition-all duration-200
                                 ${activeCategory === cat
@@ -172,71 +203,123 @@ export default function Gallery() {
             )}
           </div>
 
-          {/* Photo grid */}
+          {/* Photo grid — starts with 6, more load in when you tap "View More" */}
           {mediaTab === "photos" && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredPhotos.map((photo, i) => (
-                <div key={photo.id}
-                     onClick={() => setLightboxIndex(i)}
-                     className="group relative rounded-2xl overflow-hidden cursor-pointer
-                                aspect-square shadow-sm hover:shadow-xl transition-all duration-300
-                                hover:-translate-y-1">
-                  <img src={photo.src} alt={photo.caption}
-                       className="w-full h-full object-cover transition-transform duration-500
-                                  group-hover:scale-110" />
-                  {/* Caption overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent
-                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2
-                                  group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white text-xs font-bold font-sans leading-snug
-                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {photo.caption}
-                    </p>
-                    <p className="text-white/60 text-xs font-sans
-                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {photo.date}
-                    </p>
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredPhotos.slice(0, visiblePhotos).map((photo, i) => (
+                  <div key={photo.id}
+                       onClick={() => setLightboxIndex(i)}
+                       className="group relative rounded-2xl overflow-hidden cursor-pointer
+                                  aspect-square shadow-sm hover:shadow-xl transition-all duration-300
+                                  hover:-translate-y-1">
+                    <img src={photo.src} alt={photo.caption}
+                         className="w-full h-full object-cover transition-transform duration-500
+                                    group-hover:scale-110" />
+                    {/* Caption that slides up when you hover over a photo */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent
+                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2
+                                    group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white text-xs font-bold font-sans leading-snug
+                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {photo.caption}
+                      </p>
+                      <p className="text-white/60 text-xs font-sans
+                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {photo.date}
+                      </p>
+                    </div>
+                    {/* Little expand icon in the corner */}
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm
+                                    flex items-center justify-center opacity-0 group-hover:opacity-100
+                                    transition-opacity duration-300">
+                      <span className="text-white text-sm">⤢</span>
+                    </div>
                   </div>
-                  {/* Expand icon */}
-                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm
-                                  flex items-center justify-center opacity-0 group-hover:opacity-100
-                                  transition-opacity duration-300">
-                    <span className="text-white text-sm">⤢</span>
-                  </div>
+                ))}
+              </div>
+
+              {/* Animated button — only appears when there are more photos waiting */}
+              {visiblePhotos < filteredPhotos.length && (
+                <div className="mt-10 flex flex-col items-center gap-4">
+                  <button
+                    onClick={loadMorePhotos}
+                    disabled={loadingPhotos}
+                    className="flex items-center gap-2 px-8 py-3 rounded-full text-xs font-black uppercase
+                               tracking-wide font-sans border-2 border-green-900 text-green-900
+                               bg-transparent cursor-pointer transition-all duration-200
+                               hover:bg-green-900 hover:text-white hover:-translate-y-0.5
+                               disabled:opacity-70 disabled:cursor-not-allowed min-w-[140px] justify-center">
+                    {loadingPhotos ? (
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </span>
+                    ) : (
+                      "Show More ↓"
+                    )}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
 
-          {/* Video grid */}
+          {/* Video grid — starts with 4, more load in when you tap "View More" */}
           {mediaTab === "videos" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {VIDEOS.map((video) => (
-                <div key={video.id} className="rounded-2xl overflow-hidden shadow-sm
-                                               hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <div className="relative aspect-video bg-gray-900">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.videoId}`}
-                      title={video.title}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <div className="p-5 bg-white border border-gray-100 border-t-0 rounded-b-2xl">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full font-sans">
-                        {video.category}
-                      </span>
-                      <span className="text-xs text-gray-400 font-sans">{video.date}</span>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {VIDEOS.slice(0, visibleVideos).map((video) => (
+                  <div key={video.id} className="rounded-2xl overflow-hidden shadow-sm
+                                                 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div className="relative aspect-video bg-gray-900">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${video.videoId}`}
+                        title={video.title}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
                     </div>
-                    <h3 className="text-base font-bold text-green-900 mb-1">{video.title}</h3>
-                    <p className="text-sm text-gray-500 font-sans leading-relaxed">{video.desc}</p>
+                    <div className="p-5 bg-white border border-gray-100 border-t-0 rounded-b-2xl">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full font-sans">
+                          {video.category}
+                        </span>
+                        <span className="text-xs text-gray-400 font-sans">{video.date}</span>
+                      </div>
+                      <h3 className="text-base font-bold text-green-900 mb-1">{video.title}</h3>
+                      <p className="text-sm text-gray-500 font-sans leading-relaxed">{video.desc}</p>
+                    </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Animated button — only appears when there are more videos waiting */}
+              {visibleVideos < VIDEOS.length && (
+                <div className="mt-10 flex flex-col items-center gap-4">
+                  <button
+                    onClick={loadMoreVideos}
+                    disabled={loadingVideos}
+                    className="flex items-center gap-2 px-8 py-3 rounded-full text-xs font-black uppercase
+                               tracking-wide font-sans border-2 border-green-900 text-green-900
+                               bg-transparent cursor-pointer transition-all duration-200
+                               hover:bg-green-900 hover:text-white hover:-translate-y-0.5
+                               disabled:opacity-70 disabled:cursor-not-allowed min-w-[140px] justify-center">
+                    {loadingVideos ? (
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="w-1.5 h-1.5 bg-green-900 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </span>
+                    ) : (
+                      "Show More ↓"
+                    )}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -256,7 +339,7 @@ export default function Gallery() {
                           hover:bg-green-800 hover:-translate-y-0.5 shadow-lg">
               Apply for Admission
             </Link>
-            <Link to="/media#events"
+            <Link to="/media/events"
                className="bg-white text-green-900 px-8 py-4 rounded font-black text-sm uppercase
                           tracking-wide font-sans no-underline transition-all duration-200
                           hover:bg-green-50 hover:-translate-y-0.5 shadow-lg">
