@@ -18,7 +18,13 @@ const NAV_LINKS = [
   },
   {
     label: "About Us",
-    path: "/about",
+    path: "/about/mission",
+    sub: [
+      { label: "Mission & Vision", path: "/about/mission"    },
+      { label: "Our History",      path: "/about/history"    },
+      { label: "Our Values",       path: "/about/values"     },
+      { label: "Leadership",       path: "/about/leadership" },
+    ],
   },
   // {
   //   label: "Programs",
@@ -87,8 +93,9 @@ export default function Navbar() {
 
   const isActive = (path) =>
     location.pathname === path ||
-    (path === "/media/gallery"      && location.pathname.startsWith("/media")) ||
-    (path === "/student-life/clubs" && location.pathname.startsWith("/student-life"));
+    (path === "/media/gallery"      && location.pathname.startsWith("/media"))      ||
+    (path === "/student-life/clubs" && location.pathname.startsWith("/student-life")) ||
+    (path === "/about/mission"      && location.pathname.startsWith("/about"));
 
   return (
     <>
