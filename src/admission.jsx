@@ -301,29 +301,6 @@ export default function Admission() {
         </div>
       </section>
 
-      {/* CTA BANNER*/}
-      <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Take the Next Step?</h2>
-        <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
-          Our admissions team is here to guide you every step of the way.
-          Reach out today and let's unlock your child's potential together.
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <a href="mailto:info@kefjoyacademy.sc.ke"
-             className="inline-block bg-yellow-400 text-green-900 px-10 py-4 rounded font-black text-sm
-                        uppercase tracking-wide font-sans transition-all duration-200 no-underline
-                        hover:bg-yellow-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(240,192,64,0.4)]">
-            Email Us
-          </a>
-          <a href="tel:+254700000000"
-             className="inline-block bg-transparent text-white px-10 py-4 rounded font-black text-sm
-                        uppercase tracking-wide font-sans border-2 border-white/60 no-underline
-                        transition-all duration-200 hover:border-white hover:bg-white/10">
-            Call Us
-          </a>
-        </div>
-      </div>
-
       <Footer />
 
       {/* Scroll to top */}

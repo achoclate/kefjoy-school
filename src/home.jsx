@@ -96,7 +96,7 @@ export default function Home() {
                           uppercase tracking-wide font-sans transition-all duration-200
                           hover:bg-yellow-300 hover:-translate-y-0.5 no-underline
                           shadow-[0_4px_15px_rgba(240,192,64,0.4)]">
-              Enrol Your Child
+              Enroll Your Child
             </Link>
             <Link to="/academics"
                className="bg-transparent text-white px-8 py-3.5 rounded font-black text-sm
@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* CTA BANNER */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Enrol Your Child?</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Enroll Your Child?</h2>
         <p className="text-base opacity-85 mb-9 font-sans max-w-xl mx-auto leading-relaxed">
           Join our growing community of learners. Click below to start the admission process and
           unlock your child's potential today.
@@ -184,7 +184,7 @@ export default function Home() {
                       uppercase tracking-wide font-sans transition-all duration-200 no-underline
                       hover:bg-yellow-300 hover:-translate-y-0.5
                       shadow-[0_4px_20px_rgba(240,192,64,0.4)]">
-          [ Click Here to Enrol Your Child Today ]
+          [ Click Here to Enroll Your Child Today ]
         </Link>
       </div>
 

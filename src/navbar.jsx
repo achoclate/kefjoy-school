@@ -42,11 +42,11 @@ const NAV_LINKS = [
   },
   {
     label: "Student Life",
-    path: "/student-life",
+    path: "/student-life/clubs",
     sub: [
-      { label: "Clubs",                 path: "/student-life#clubs" },
-      { label: "Sports",                path: "/student-life#sports" },
-      { label: "Guidance & Counseling", path: "/student-life#counseling" },
+      { label: "Clubs & Activities",      path: "/student-life/clubs"      },
+      { label: "Sports",                  path: "/student-life/sports"     },
+      { label: "Guidance & Counselling",  path: "/student-life/counseling" },
     ],
   },
   {
@@ -87,7 +87,8 @@ export default function Navbar() {
 
   const isActive = (path) =>
     location.pathname === path ||
-    (path === "/media/gallery" && location.pathname.startsWith("/media"));
+    (path === "/media/gallery"      && location.pathname.startsWith("/media")) ||
+    (path === "/student-life/clubs" && location.pathname.startsWith("/student-life"));
 
   return (
     <>

@@ -157,7 +157,7 @@ export default function Footer() {
                          font-black text-xs uppercase tracking-wide font-sans no-underline
                          transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5"
             >
-              Enrol Now →
+              Enroll Now →
             </Link>
           </div>
         </div>
