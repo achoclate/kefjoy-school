@@ -113,7 +113,7 @@ function StageDetail({ stage, onClose }) {
       className="mt-6 rounded-2xl border border-gray-100 shadow-lg overflow-hidden bg-white relative"
       style={{ animation: "expandIn 0.35s ease forwards" }}
     >
-      {/* Floating close;top right */}
+      {/* Floating close button on the top right */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-red-50

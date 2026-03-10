@@ -3,18 +3,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// STUDENT LIFE PAGE
-//
-// This single file handles three routes:
-//   /student-life/clubs
-//   /student-life/sports
-//   /student-life/counseling
-//
-// The URL param "section" tells the page which content to show.
-// To add or edit cards, update the CLUBS, SPORTS, or COUNSELLING arrays below.
-// Keep descriptions short — aim for 10–15 words max per card.
-// ─────────────────────────────────────────────────────────────────────────────
 
 const CLUBS = [
   {
@@ -175,7 +163,7 @@ const COUNSELLING = [
   },
 ];
 
-// Hero title, badge, and subtitle change depending on which section is active
+// Hero title and subtitle change depending on which section is active
 const SECTION_META = {
   clubs: {
     badge: "Extracurriculars",
@@ -194,14 +182,14 @@ const SECTION_META = {
   },
 };
 
-// Tab buttons in the hero — each one links to its own route
+// Tab buttons in the hero 
 const SECTIONS = [
   { id: "clubs",      label: "Clubs & Activities",    icon: "🏆", path: "/student-life/clubs"      },
   { id: "sports",     label: "Sports",                 icon: "⚽", path: "/student-life/sports"     },
   { id: "counseling", label: "Guidance & Counselling", icon: "💛", path: "/student-life/counseling" },
 ];
 
-// Club card — name, meeting day, short description, and 2 activity tags
+// Club card 
 function ClubCard({ club }) {
   const [open, setOpen] = useState(false);
   return (
@@ -254,7 +242,7 @@ function ClubCard({ club }) {
   );
 }
 
-// Sport card — name, gender, season, short description, and 2 achievements
+// Sport card 
 function SportCard({ sport }) {
   return (
     <div className="bg-white border border-gray-100 border-l-4 border-l-green-700 rounded-2xl
@@ -290,7 +278,7 @@ function SportCard({ sport }) {
   );
 }
 
-// Counselling card — title, short description, and 2 feature bullets
+// Counselling card
 function CounsellingCard({ item }) {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm
@@ -313,15 +301,15 @@ function CounsellingCard({ item }) {
   );
 }
 
-// Main component — reads the URL param and renders the right section
+// Main component that reads the URL param and renders the right section
 export default function StudentLife() {
   const { section } = useParams();
   const navigate = useNavigate();
 
-  // Fall back to "clubs" if someone lands on /student-life with no section in the URL
+  // Fall back to "clubs" if someone lands on /student-life
   const activeSection = section || "clubs";
 
-  // Redirect to clubs if the URL has an unrecognised section name
+  // Redirect to clubs if the URL has an unrecognised section
   useEffect(() => {
     const valid = SECTIONS.map(s => s.id);
     if (section && !valid.includes(section)) {
@@ -335,7 +323,7 @@ export default function StudentLife() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* Hero — the title and subtitle update based on which section you're on */}
+      {/* Hero where the title and subtitle update based on which section you're on */}
       <section className="relative pt-32 pb-0 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-950
                           overflow-hidden min-h-[420px] flex items-end">
         <div className="absolute inset-0 bg-black/25" />
@@ -361,7 +349,7 @@ export default function StudentLife() {
             {meta.subtitle}
           </p>
 
-          {/* Tab buttons — clicking one navigates to a different route */}
+          {/* Tab buttons that onclicking navigates to respective route */}
           <div className="flex flex-wrap gap-2">
             {SECTIONS.map((s) => (
               <Link

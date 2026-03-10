@@ -24,7 +24,7 @@ const SOCIAL_LINKS = [
   { label: "yt", name: "YouTube",   href: "https://youtube.com/@kefjoyacademy" },
 ];
 
-//  COMPONENT 
+// MAIN COMPONENT 
 
 export default function Footer() {
   return (

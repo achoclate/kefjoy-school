@@ -3,17 +3,9 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// EVENTS PAGE
-//
-// TO ADD OR EDIT AN EVENT: find the EVENTS array below and add a new object.
-// Set "status" to "upcoming", "ongoing", or "past" — update this as time passes.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// All school events — update each term to keep this current
 const EVENTS = [
 
-  // ── UPCOMING ── add new events at the top of this group
+  //  UPCOMING 
   {
     id: 1,
     title: "Open Day 2024",
@@ -59,7 +51,7 @@ const EVENTS = [
     cta: { label: "Book Slot", href: "/contact" },
   },
 
-  // ── ONGOING ── things currently happening at school
+  // ONGOING 
   {
     id: 5,
     title: "Term 1 — 2024 Academic Year",
@@ -83,7 +75,7 @@ const EVENTS = [
     cta: { label: "Fixtures", href: "/student-life#sports" },
   },
 
-  // ── PAST ── move events down here once they're done
+  // To move events down once they're done
   {
     id: 7,
     title: "Annual Arts Gala 2023",
@@ -119,7 +111,7 @@ const EVENTS = [
   },
 ];
 
-// Status badge styling — used on every event card
+// Status badge styling
 const STATUS_STYLE = {
   upcoming: "bg-emerald-50 text-emerald-700 border border-emerald-200",
   ongoing:  "bg-yellow-50 text-yellow-700 border border-yellow-200",
@@ -132,7 +124,7 @@ const STATUS_LABEL = {
   past:     "Completed",
 };
 
-// A single slim event row — just the essentials, no clutter
+// A single slim event row 
 function EventCard({ event }) {
   return (
     <div className={`bg-white border-l-4 border-l-green-700 border border-gray-100 rounded-xl
@@ -146,7 +138,7 @@ function EventCard({ event }) {
         <p className="text-xs text-gray-400 font-sans mt-0.5">{event.time}</p>
       </div>
 
-      {/* Divider — visible on desktop only */}
+      {/* Divider */}
       <div className="hidden sm:block w-px h-10 bg-gray-200 flex-shrink-0" />
 
       {/* Main info */}
@@ -163,7 +155,7 @@ function EventCard({ event }) {
         </div>
       </div>
 
-      {/* Right side — status + optional CTA */}
+      {/* shows status of the event */}
       <div className="flex items-center gap-3 flex-shrink-0">
         <span className={`${STATUS_STYLE[event.status]} text-xs font-semibold px-2.5 py-1 rounded-full font-sans`}>
           {STATUS_LABEL[event.status]}
@@ -184,13 +176,13 @@ function EventCard({ event }) {
 export default function Events() {
   const [activeStatus, setActiveStatus] = useState("all");
 
-  // How many events to show at once — starts at 4, grows when you tap "Show More"
+  // How many events to show at once 
   const [visibleEvents, setVisibleEvents] = useState(4);
 
-  // Controls the pulsing dots animation on the Show More button
+  // Controls the pulsing animation on the Show More button
   const [loadingEvents, setLoadingEvents] = useState(false);
 
-  // Briefly shows the loading animation then reveals the next batch of events
+  // loading animation just before the next batch of events reveal
   const loadMoreEvents = () => {
     setLoadingEvents(true);
     setTimeout(() => {
@@ -259,7 +251,7 @@ export default function Events() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
 
-          {/* Filter tabs — tap one to narrow down the list */}
+          {/* Filter tab ; tap on each to narrow down the list */}
           <div className="flex flex-wrap gap-2 mb-10">
             {statusTabs.map((tab) => (
               <button key={tab}
@@ -279,14 +271,14 @@ export default function Events() {
             ))}
           </div>
 
-          {/* Event rows — 4 at a time, tap View More to load the rest */}
+          {/* Events to only show 4 at a time, tap show More to load more events */}
           <div className="flex flex-col gap-3">
             {filtered.slice(0, visibleEvents).map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
 
-          {/* Animated button — only appears when there are more events waiting */}
+          {/* A button that only appears when there are more events */}
           {visibleEvents < filtered.length && (
             <div className="mt-10 flex flex-col items-center gap-4">
               <button
@@ -310,7 +302,7 @@ export default function Events() {
             </div>
           )}
 
-          {/* Empty state — just in case a filter has no matching events */}
+          {/* Empty state in the case where a filter has no matching events */}
           {filtered.length === 0 && (
             <div className="text-center py-20">
               <div className="text-5xl mb-4">📅</div>

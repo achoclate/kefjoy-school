@@ -173,7 +173,7 @@ export default function Contact() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* HERO BANNER */}
+      {/* HERO */}
       <div className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-[70px] overflow-hidden">
         <div className="absolute inset-0 opacity-10"
              style={{ backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "28px 28px" }} />

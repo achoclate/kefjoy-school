@@ -3,17 +3,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ABOUT US PAGE
-//
-// One file, four routes:
-//   /about/mission    — Vision, Mission, and Motto
-//   /about/history    — Our story and timeline
-//   /about/values     — The five school values
-//   /about/leadership — The team and why to trust us
-//
-// To edit content, update the data arrays below.
-// ─────────────────────────────────────────────────────────────────────────────
 
 const VALUES = [
   { icon: "🤝", title: "Inclusivity",  desc: "Every child is welcome regardless of background, ability or need." },
@@ -76,7 +65,7 @@ const SECTION_META = {
   },
 };
 
-// The four hero tab buttons
+// hero tab buttons
 const SECTIONS = [
   { id: "mission",    label: "Mission & Vision", icon: "🎯", path: "/about/mission"    },
   { id: "history",    label: "History",           icon: "📖", path: "/about/history"    },
@@ -88,7 +77,7 @@ export default function About() {
   const { section } = useParams();
   const navigate = useNavigate();
 
-  // Default to "mission" if someone lands on /about with no section
+  // Default to "mission" if someone lands on /about 
   const activeSection = section || "mission";
 
   // Redirect to mission if the URL has an unrecognised section
@@ -105,7 +94,7 @@ export default function About() {
     <div className="font-serif text-gray-800 overflow-x-hidden">
       <Navbar />
 
-      {/* Hero — title and subtitle update based on the active section */}
+      {/* Hero update; based on the active section */}
       <section className="relative pt-32 pb-0 px-6 bg-gradient-to-br from-green-900 via-green-800 to-green-950
                           overflow-hidden min-h-[420px] flex items-end">
         <div className="absolute inset-0 bg-black/25" />
@@ -133,7 +122,7 @@ export default function About() {
             {meta.subtitle}
           </p>
 
-          {/* Tab buttons — each one is a Link to a different route */}
+          {/* hero buttons */}
           <div className="flex flex-wrap gap-2">
             {SECTIONS.map((s) => (
               <Link
@@ -153,7 +142,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── MISSION & VISION ── */}
+      {/* MISSION & VISION */}
       {activeSection === "mission" && (
         <section className="py-20 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
@@ -193,7 +182,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Vision, Mission, and Motto as three equal cards */}
+            {/* Vision, Mission, and Motto cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Vision card */}
               <div className="bg-green-50 border border-green-100 border-l-4 border-l-green-700 rounded-2xl p-8
@@ -239,7 +228,7 @@ export default function About() {
         </section>
       )}
 
-      {/* ── HISTORY ── */}
+      {/* HISTORY */}
       {activeSection === "history" && (
         <section className="py-20 px-6 bg-gray-50">
           <div className="max-w-7xl mx-auto">
@@ -281,7 +270,7 @@ export default function About() {
         </section>
       )}
 
-      {/* ── VALUES ── */}
+      {/* VALUES */}
       {activeSection === "values" && (
         <section className="py-20 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
@@ -308,7 +297,7 @@ export default function About() {
         </section>
       )}
 
-      {/* ── LEADERSHIP ── */}
+      {/* LEADERSHIP */}
       {activeSection === "leadership" && (
         <section className="py-20 px-6 bg-gray-50">
           <div className="max-w-7xl mx-auto">

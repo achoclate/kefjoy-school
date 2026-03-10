@@ -3,21 +3,11 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// GALLERY PAGE
-//
-// TO ADD PHOTOS: paste real image URLs in the PHOTOS array below.
-// Best option is Cloudinary — upload photos there and copy the URLs here.
-//
-// TO ADD VIDEOS: add a new entry to the VIDEOS array.
-// The videoId is the part after "?v=" in a YouTube URL.
-// e.g. https://www.youtube.com/watch?v=80P6grb8p2g → videoId: "80P6grb8p2g"
-// ─────────────────────────────────────────────────────────────────────────────
 
 // Category buttons shown above the photo grid
 const CATEGORIES = ["All", "Events", "Sports", "Academics", "Arts", "Campus"];
 
-// School photos — swap the placehold.co URLs with real ones when ready
+// Photos 
 const PHOTOS = [
   { id: 1,  src: "https://placehold.co/800x600/1a4731/ffffff?text=Annual+Sports+Day",    category: "Sports",    caption: "Annual Sports Day 2024",             date: "March 2024"     },
   { id: 2,  src: "https://placehold.co/800x600/14532d/ffffff?text=Science+Fair",         category: "Academics", caption: "Science & Technology Fair",           date: "April 2024"     },
@@ -33,7 +23,7 @@ const PHOTOS = [
   { id: 12, src: "https://placehold.co/800x600/365314/ffffff?text=Prize+Giving+Day",     category: "Events",    caption: "End of Year Prize Giving Ceremony",   date: "November 2023"  },
 ];
 
-// School videos — add new entries here as you upload to YouTube
+// Videos
 const VIDEOS = [
   { id: 1, videoId: "80P6grb8p2g", title: "Kefjoy Academy — School Tour 2024",    desc: "Take a full tour of our campus, classrooms, sports fields and facilities.",      date: "January 2024",  category: "Campus"    },
   { id: 2, videoId: "80P6grb8p2g", title: "Annual Sports Day Highlights 2024",     desc: "Relive the best moments from our action-packed Annual Sports Day.",              date: "March 2024",    category: "Sports"    },
@@ -41,8 +31,8 @@ const VIDEOS = [
   { id: 4, videoId: "80P6grb8p2g", title: "Science & Technology Fair Showcase",    desc: "Students present their innovative projects at our annual Science Fair.",         date: "April 2024",    category: "Academics" },
 ];
 
-// Lightbox — full screen viewer that opens when you click any photo.
-// Keyboard: Escape to close, left/right arrows to browse.
+// Lightbox that is in full screen viewer when you click any photo
+// Navigation on the keyboard: Esc to close, left/right arrows to move
 function Lightbox({ photo, onClose, onPrev, onNext }) {
   useEffect(() => {
     const handler = (e) => {
@@ -89,15 +79,15 @@ export default function Gallery() {
   const [lightboxIndex, setLightboxIndex]   = useState(null);
   const [mediaTab, setMediaTab]             = useState("photos");
 
-  // How many photos/videos are currently showing — starts at 6 and 4 respectively
+  // How many photos/videos are that are rendered initially 
   const [visiblePhotos, setVisiblePhotos] = useState(6);
   const [visibleVideos, setVisibleVideos] = useState(4);
 
-  // Controls the pulsing dots animation — turns on briefly when you tap Show More
+  // Controls the loading animation 
   const [loadingPhotos, setLoadingPhotos] = useState(false);
   const [loadingVideos, setLoadingVideos] = useState(false);
 
-  // Briefly shows the loading animation then reveals the new content
+  // loading animation befow new content is revealed
   const loadMorePhotos = () => {
     setLoadingPhotos(true);
     setTimeout(() => {
@@ -114,12 +104,12 @@ export default function Gallery() {
     }, 600);
   };
 
-  // Only show photos matching the selected category filter
+  // Filter to only show photos matching the selected category
   const filteredPhotos = activeCategory === "All"
     ? PHOTOS
     : PHOTOS.filter(p => p.category === activeCategory);
 
-  // Reset photo count back to 6 whenever the category filter changes
+  // To reset photo count back to 6 whenever the category filter changes
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
     setVisiblePhotos(6);
@@ -168,9 +158,9 @@ export default function Gallery() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
 
-          {/* Photos / Videos toggle + category filter row */}
+          {/* Photos / Videos toggle + category filter */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
-            {/* Photos / Videos pill toggle */}
+            {/* Photos / Videos toggle */}
             <div className="flex bg-gray-100 rounded-xl p-1 gap-1 self-start">
               {["photos", "videos"].map((tab) => (
                 <button key={tab}
@@ -185,7 +175,7 @@ export default function Gallery() {
               ))}
             </div>
 
-            {/* Category filter — only visible on photos tab */}
+            {/* filter ; only visible on photos tab */}
             {mediaTab === "photos" && (
               <div className="flex flex-wrap gap-2">
                 {CATEGORIES.map((cat) => (
@@ -203,7 +193,7 @@ export default function Gallery() {
             )}
           </div>
 
-          {/* Photo grid — starts with 6, more load in when you tap "View More" */}
+          {/* Photo grid — starts with 6, more load onclicking " Show More" */}
           {mediaTab === "photos" && (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -240,7 +230,7 @@ export default function Gallery() {
                 ))}
               </div>
 
-              {/* Animated button — only appears when there are more photos waiting */}
+              {/* button that only appears when there are more photos waiting */}
               {visiblePhotos < filteredPhotos.length && (
                 <div className="mt-10 flex flex-col items-center gap-4">
                   <button
@@ -266,7 +256,7 @@ export default function Gallery() {
             </>
           )}
 
-          {/* Video grid — starts with 4, more load in when you tap "View More" */}
+          {/* Video grid to only render 4 videos at the start then more load onclick "show More" */}
           {mediaTab === "videos" && (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -296,7 +286,7 @@ export default function Gallery() {
                 ))}
               </div>
 
-              {/* Animated button — only appears when there are more videos waiting */}
+              {/* A button that only appears when there are more videos waiting */}
               {visibleVideos < VIDEOS.length && (
                 <div className="mt-10 flex flex-col items-center gap-4">
                   <button
@@ -351,7 +341,7 @@ export default function Gallery() {
 
       <Footer />
 
-      {/* Lightbox renders on top of everything when a photo is clicked */}
+      {/* Lightbox that renders on top of everything when a photo is clicked */}
       {lightboxIndex !== null && (
         <Lightbox
           photo={filteredPhotos[lightboxIndex]}
