@@ -232,7 +232,7 @@ export default function Contact() {
                 />
               </div>
               <p className="text-xs text-gray-400 font-sans mt-3 text-center">
-                📍 Nairobi, Kenya — update with your exact coordinates
+                📍 Nairobi, Kenya
               </p>
             </div>
 
