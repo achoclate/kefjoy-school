@@ -2,44 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-
-const VALUES = [
-  { icon: "🤝", title: "Inclusivity",  desc: "Every child is welcome regardless of background, ability or need." },
-  { icon: "👥", title: "Teamwork",     desc: "We grow together — students, teachers and parents as one community." },
-  { icon: "🙏", title: "Godliness",    desc: "Faith is at the heart of everything we do, guiding our daily walk." },
-  { icon: "❤️", title: "Love & Care", desc: "A warm, nurturing environment where every child feels safe and valued." },
-  { icon: "📏", title: "Discipline",   desc: "Building self-control and responsibility from the earliest years." },
-];
-
-const TRUST_REASONS = [
-  "Excellent gated compound for your child's safety",
-  "Integrated Special Unit for children with special needs",
-  "Visionary and experienced administration",
-  "Efficient transport and timely well-prepared meals",
-  "Extra-curricular activities for early talent development",
-  "Occupational therapy to support special needs children",
-  "Emotional support workshops for parents",
-];
-
-const TEAM = [
-  { name: "Madam Joyce Nyanamba", role: "Director",     emoji: "👩‍💼" },
-  { name: "Mr. Duke Otege",       role: "Head Teacher", emoji: "👨‍🏫" },
-];
-
-const MILESTONES = [
-  { year: "2004", text: "Kefjoy Academy founded in a 3-bedroomed residential house" },
-  { year: "2010", text: "Expanded to first dedicated school building" },
-  { year: "2018", text: "Opened Integrated Special Unit for children with special needs" },
-  { year: "2023", text: "Two blocks, three floors, computer room and library fully operational" },
-];
-
-const STATS = [
-  { number: "19+",  label: "Years of Excellence",        icon: "🏆" },
-  { number: "500+", label: "Children Impacted",           icon: "👦" },
-  { number: "2",    label: "Blocks, 3 Floors of Space",  icon: "🏫" },
-  { number: "100%", label: "Christian-Based Environment", icon: "🙏" },
-];
+import { VALUES, TRUST_REASONS, TEAM, MILESTONES, STATS } from "./data";
 
 // Hero title, badge, and subtitle per section
 const SECTION_META = {
@@ -77,7 +40,7 @@ export default function About() {
   const { section } = useParams();
   const navigate = useNavigate();
 
-  // Default to "mission" if someone lands on /about 
+  // Default to "mission" if someone lands on /about
   const activeSection = section || "mission";
 
   // Redirect to mission if the URL has an unrecognised section

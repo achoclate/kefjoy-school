@@ -2,107 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-//  DATA
-
-const STAGES = [
-  {
-    id: "preschool",
-    emoji: "🌱",
-    level: "Pre-School",
-    ages: "Ages 2 – 5",
-    years: "PP1 & PP2",
-    color: "from-emerald-400 to-green-600",
-    accent: "border-emerald-500",
-    badge: "bg-emerald-100 text-emerald-800",
-    tagBg: "bg-emerald-50",
-    subjects: ["Language Activities","Mathematical Activities","Environmental Activities","Creative Activities","Music & Movement","Religious Education"],
-    description: `Our Pre-School programme creates a warm, nurturing environment where young children
-    begin their learning journey through structured play, exploration, and discovery. Guided by
-    experienced Early Childhood educators, children develop foundational literacy, numeracy, and
-    social-emotional skills that prepare them for formal schooling.`,
-    highlights: [
-      "Play-based learning approach",
-      "Social and emotional development",
-      "Introduction to phonics and early reading",
-      "Creative arts and expression",
-    ],
-  },
-  {
-    id: "lower-primary",
-    emoji: "📖",
-    level: "Lower Primary",
-    ages: "Ages 6 – 9",
-    years: "Grade 1 – 3",
-    color: "from-blue-400 to-blue-700",
-    accent: "border-blue-500",
-    badge: "bg-blue-100 text-blue-800",
-    tagBg: "bg-blue-50",
-    subjects: ["Literacy","Kiswahili","Mathematics","Environmental & Social Studies","Religious Education","Creative Arts","Physical Education"],
-    description: `Lower Primary builds on the foundational skills developed in Pre-School. Children
-    transition into a more structured learning environment while still benefiting from hands-on,
-    inquiry-based teaching methods. Our teachers foster curiosity, independence, and a genuine
-    love for learning across all subject areas.`,
-    highlights: [
-      "CBC-aligned competency development",
-      "Strong literacy and numeracy focus",
-      "Integration of Christian values",
-      "Individualised learning support",
-    ],
-  },
-  {
-    id: "upper-primary",
-    emoji: "🔭",
-    level: "Upper Primary",
-    ages: "Ages 10 – 12",
-    years: "Grade 4 – 6",
-    color: "from-violet-400 to-violet-700",
-    accent: "border-violet-500",
-    badge: "bg-violet-100 text-violet-800",
-    tagBg: "bg-violet-50",
-    subjects: ["English","Kiswahili","Mathematics","Science & Technology","Social Studies","Creative Arts & Sports","Religious Education","Home Science"],
-    description: `Upper Primary marks a significant deepening of academic content. Students engage
-    with more complex concepts across all subjects while developing critical thinking, research,
-    and collaborative skills. This stage prepares learners for the transition into secondary
-    education with confidence and strong academic grounding.`,
-    highlights: [
-      "Critical thinking and problem solving",
-      "Introduction to Science & Technology",
-      "Project-based learning activities",
-      "Leadership and responsibility development",
-    ],
-  },
-  {
-    id: "junior-secondary",
-    emoji: "🎓",
-    level: "Junior Secondary",
-    ages: "Ages 13 – 15",
-    years: "Grade 7 – 9",
-    color: "from-amber-400 to-orange-600",
-    accent: "border-amber-500",
-    badge: "bg-amber-100 text-amber-800",
-    tagBg: "bg-amber-50",
-    subjects: ["English","Kiswahili","Mathematics","Integrated Science","Health Education","Pre-Technical Studies","Social Studies","Business Studies","Agriculture","Creative Arts","Physical Education","Religious Education"],
-    description: `Junior Secondary is a transformative stage where students begin to specialise and
-    develop a clearer sense of their academic strengths and career interests. Strong pastoral care
-    ensures every student thrives academically and personally during this critical period.`,
-    highlights: [
-      "Subject specialisation begins",
-      "Strong STEM foundations",
-      "Comprehensive pastoral care system",
-      "Preparation for Senior Secondary",
-    ],
-  },
-];
-
-const APPROACH_CARDS = [
-  { icon: "🧠", title: "Competency Based",      desc: "Our CBC-aligned approach focuses on building real-world skills, not just content knowledge." },
-  { icon: "✝️",  title: "Christian Foundation",  desc: "Faith, values, and character development are woven through everything we do." },
-  { icon: "🤝", title: "Inclusive Learning",    desc: "Our Integrated Special Unit ensures every child receives the support they need." },
-  { icon: "🌱", title: "Holistic Growth",       desc: "Academics, sports, arts, and character development are all equally valued here." },
-  { icon: "👩‍🏫", title: "Expert Teachers",      desc: "Qualified, passionate educators who know each child by name and nurture their unique potential." },
-  { icon: "📊", title: "Continuous Assessment", desc: "Regular formative and summative assessments ensure no child falls behind unnoticed." },
-];
+import { STAGES, APPROACH_CARDS } from "./data";
 
 // STAGE DETAIL ; expanded panel
 
@@ -206,7 +106,7 @@ function StageDetail({ stage, onClose }) {
   );
 }
 
-// LEVEL SUMMARY CARD 
+// LEVEL SUMMARY CARD
 function LevelCard({ stage, isActive, onToggle }) {
   return (
     <div id={stage.id} className="scroll-mt-24">
@@ -253,7 +153,7 @@ function LevelCard({ stage, isActive, onToggle }) {
   );
 }
 
-// MAIN COMPONENT 
+// MAIN COMPONENT
 
 export default function Academics() {
   const [activeId, setActiveId] = useState(null);

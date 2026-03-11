@@ -2,43 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-// DATA
-
-const HERO_SLIDES = [
-  {
-    bgClass: "from-green-900 via-green-700 to-green-900",
-    headline: "Unlocking Every Child's Potential",
-    sub: "A Christian-based center developing whole, balanced minds",
-  },
-  {
-    bgClass: "from-blue-950 via-blue-900 to-blue-950",
-    headline: "Where Every Child Belongs",
-    sub: "Integrated Special Unit for diverse learners",
-  },
-  {
-    bgClass: "from-amber-900 via-amber-700 to-amber-900",
-    headline: "Excellence in Education",
-    sub: "Arts, Sciences, Sports and beyond",
-  },
-];
-
-const PROGRAMS = [
-  { icon: "🎨", title: "The Arts",  desc: "Creative expression through visual arts, music, drama and more." },
-  { icon: "🔬", title: "Sciences",  desc: "Hands-on STEM learning that inspires curiosity and discovery." },
-  { icon: "📐", title: "Maths",     desc: "Building strong numerical foundations through engaging methods." },
-  { icon: "📚", title: "Reading",   desc: "Cultivating a love for literacy and language from an early age." },
-  { icon: "⚽", title: "Sports",    desc: "Physical development and teamwork through diverse sports programs." },
-  { icon: "💻", title: "Online",    desc: "Digital learning tools integrated into every classroom experience." },
-];
-
-
-const WHY_CHOOSE = [
-  { icon: "🌟", title: "Christian Values",        desc: "A faith-based environment that nurtures spiritual growth alongside academic excellence." },
-  { icon: "🧩", title: "Integrated Special Unit", desc: "Dedicated support for children with special needs, ensuring every child thrives." },
-  { icon: "🌍", title: "Holistic Development",    desc: "Academics, arts, sports and character all woven into our daily program." },
-  { icon: "👨‍🏫", title: "Experienced Educators",  desc: "Passionate teachers committed to unlocking each child's unique potential." },
-];
+import { HERO_SLIDES, PROGRAMS, WHY_CHOOSE } from "./data";
 
 // COMPONENT
 
@@ -139,8 +103,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
 
       {/* PROGRAMS */}
       <section id="programs" className="py-20 px-6 bg-gray-50">

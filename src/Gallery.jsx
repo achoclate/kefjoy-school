@@ -2,34 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-
-// Category buttons shown above the photo grid
-const CATEGORIES = ["All", "Events", "Sports", "Academics", "Arts", "Campus"];
-
-// Photos 
-const PHOTOS = [
-  { id: 1,  src: "https://placehold.co/800x600/1a4731/ffffff?text=Annual+Sports+Day",    category: "Sports",    caption: "Annual Sports Day 2024",             date: "March 2024"     },
-  { id: 2,  src: "https://placehold.co/800x600/14532d/ffffff?text=Science+Fair",         category: "Academics", caption: "Science & Technology Fair",           date: "April 2024"     },
-  { id: 3,  src: "https://placehold.co/800x600/365314/ffffff?text=Arts+Gala",            category: "Arts",      caption: "Annual Arts Gala Performance",        date: "November 2023"  },
-  { id: 4,  src: "https://placehold.co/800x600/1a4731/ffffff?text=Graduation+Ceremony",  category: "Events",    caption: "Junior Secondary Graduation 2023",    date: "November 2023"  },
-  { id: 5,  src: "https://placehold.co/800x600/14532d/ffffff?text=Football+Finals",      category: "Sports",    caption: "Inter-School Football Finals",        date: "October 2023"   },
-  { id: 6,  src: "https://placehold.co/800x600/365314/ffffff?text=Campus+Library",       category: "Campus",    caption: "Our Newly Renovated Library",         date: "January 2024"   },
-  { id: 7,  src: "https://placehold.co/800x600/1a4731/ffffff?text=Debate+Competition",   category: "Academics", caption: "Regional Debate Competition",         date: "February 2024"  },
-  { id: 8,  src: "https://placehold.co/800x600/14532d/ffffff?text=Tree+Planting+Day",    category: "Events",    caption: "Environmental Club Tree Planting",    date: "June 2023"      },
-  { id: 9,  src: "https://placehold.co/800x600/365314/ffffff?text=Swimming+Gala",        category: "Sports",    caption: "Annual Swimming Gala",                date: "August 2023"    },
-  { id: 10, src: "https://placehold.co/800x600/1a4731/ffffff?text=Drama+Festival",       category: "Arts",      caption: "Inter-School Drama Festival",         date: "September 2023" },
-  { id: 11, src: "https://placehold.co/800x600/14532d/ffffff?text=New+Classrooms",       category: "Campus",    caption: "New Junior Secondary Block Opening",  date: "January 2024"   },
-  { id: 12, src: "https://placehold.co/800x600/365314/ffffff?text=Prize+Giving+Day",     category: "Events",    caption: "End of Year Prize Giving Ceremony",   date: "November 2023"  },
-];
-
-// Videos
-const VIDEOS = [
-  { id: 1, videoId: "80P6grb8p2g", title: "Kefjoy Academy — School Tour 2024",    desc: "Take a full tour of our campus, classrooms, sports fields and facilities.",      date: "January 2024",  category: "Campus"    },
-  { id: 2, videoId: "80P6grb8p2g", title: "Annual Sports Day Highlights 2024",     desc: "Relive the best moments from our action-packed Annual Sports Day.",              date: "March 2024",    category: "Sports"    },
-  { id: 3, videoId: "80P6grb8p2g", title: "Arts Gala 2023 — Full Performance",     desc: "Watch the full recording of our spectacular Arts Gala evening performance.",     date: "November 2023", category: "Arts"      },
-  { id: 4, videoId: "80P6grb8p2g", title: "Science & Technology Fair Showcase",    desc: "Students present their innovative projects at our annual Science Fair.",         date: "April 2024",    category: "Academics" },
-];
+import { CATEGORIES, PHOTOS, VIDEOS } from "./data";
 
 // Lightbox that is in full screen viewer when you click any photo
 // Navigation on the keyboard: Esc to close, left/right arrows to move
@@ -79,11 +52,11 @@ export default function Gallery() {
   const [lightboxIndex, setLightboxIndex]   = useState(null);
   const [mediaTab, setMediaTab]             = useState("photos");
 
-  // How many photos/videos are that are rendered initially 
+  // How many photos/videos are that are rendered initially
   const [visiblePhotos, setVisiblePhotos] = useState(6);
   const [visibleVideos, setVisibleVideos] = useState(4);
 
-  // Controls the loading animation 
+  // Controls the loading animation
   const [loadingPhotos, setLoadingPhotos] = useState(false);
   const [loadingVideos, setLoadingVideos] = useState(false);
 

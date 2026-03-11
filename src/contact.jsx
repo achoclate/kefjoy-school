@@ -2,17 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-// DATA
-
-const FAQS = [
-  { q: "What are the school's operating hours?",      a: "We are open Monday to Friday from 7:30 AM to 5:00 PM, and Saturday from 9:00 AM to 12:00 PM." },
-  { q: "How do I apply for admission?",               a: "Visit our Admission page to download the application form or contact us directly and we'll guide you through the process." },
-  { q: "Do you have a Special Needs unit?",           a: "Yes! Our Integrated Special Unit provides dedicated support for children with diverse learning needs." },
-  { q: "How quickly will you respond to my enquiry?", a: "We aim to respond to all enquiries within 1–2 business days. For urgent matters, please call us directly." },
-  { q: "Is there a school bus service?",              a: "Yes, we operate school bus routes across several areas in Nairobi. Contact us for the current route schedule." },
-  { q: "Can I visit the school before enrolling?",    a: "Absolutely! We welcome school visits. Please book an appointment so we can give you a proper guided tour." },
-];
+import { CONTACT_FAQS } from "./data";
 
 // FAQ ITEM
 function FAQItem({ question, answer }) {
@@ -236,7 +226,6 @@ export default function Contact() {
               </p>
             </div>
 
-    
             {/* Social links */}
             <div className="bg-green-900 rounded-2xl p-7 text-white">
               <h3 className="text-lg font-bold mb-1">Follow Kefjoy Academy</h3>
@@ -276,7 +265,7 @@ export default function Contact() {
             <div className="w-14 h-1 bg-yellow-400 rounded mx-auto" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {FAQS.map((faq) => <FAQItem key={faq.q} question={faq.q} answer={faq.a} />)}
+            {CONTACT_FAQS.map((faq) => <FAQItem key={faq.q} question={faq.q} answer={faq.a} />)}
           </div>
         </div>
       </section>

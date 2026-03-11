@@ -2,22 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-// DATA 
-const STEPS = [
-  { number: "01", title: "Get in Touch",       icon: "✉️", desc: "Contact our Admissions team via email or phone. We'll answer all your questions and arrange a campus viewing at your convenience." },
-  { number: "02", title: "Campus Visit",        icon: "🏫", desc: "Tour our facilities, meet our teachers, and get a feel for the Kefjoy learning environment. We'd love to show you around!" },
-  { number: "03", title: "Submit Application",  icon: "📋", desc: "Complete and submit the application form along with the required documents and application fee." },
-  { number: "04", title: "Receive Decision",    icon: "✅", desc: "Once we review your application, we will communicate our decision and guide you through the next steps for enrolment." },
-];
-
-const FAQS = [
-  { q: "What is the student admission process?",                       open: true,  a: "Contact our Admissions team via info@kefjoyacademy.sc.ke. Upon answering your questions and arranging a campus visit, we will provide you with the necessary application forms. Once we receive a completed application and the application fee is paid, we will review and communicate our decision to you." },
-  { q: "Does Kefjoy Academy practice selective entry?",                open: false, a: "We are a non-selective school that believes in opportunity for all children. We do not offer or deny enrolment based on previous academic achievement. If we believe a child has Special Education Needs (SEN), we will work with parents to develop an Individual Education Plan (IEP) to support those unique needs." },
-  { q: "Does Kefjoy Academy accept applications throughout the year?", open: false, a: "Yes, you can apply for entry at any point in the school year and may join our school at any time. We assess prior learning before deciding whether we can best meet your child's needs." },
-  { q: "How is year level placement determined?",                      open: false, a: "In most circumstances, a child will enter their age-appropriate year level. In special circumstances we will consider placing a child in a year level above or below. Please alert the school upon application if you wish your child to be considered for a different level." },
-  { q: "What documents are required for admission?",                   open: false, a: "You will need the child's birth certificate, previous school report cards (if applicable), immunization records, passport photos, and a completed application form. Our admissions team will guide you through the full requirements." },
-];
+import { STEPS, FAQS } from "./data";
 
 // FAQ ITEM
 
@@ -302,7 +287,7 @@ export default function Admission() {
       </section>
 
       <Footer />
- 
+
     </div>
   );
 }

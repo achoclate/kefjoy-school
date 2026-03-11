@@ -2,166 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-
-const CLUBS = [
-  {
-    name: "Science & Technology Club",
-    icon: "🔬",
-    color: "from-blue-500 to-cyan-600",
-    badge: "bg-blue-100 text-blue-800",
-    meets: "Every Tuesday",
-    desc: "Hands-on experiments, coding projects, and robotics for curious young minds.",
-    activities: ["Robotics & Coding", "Science Fair"],
-  },
-  {
-    name: "Debate & Public Speaking",
-    icon: "🎤",
-    color: "from-violet-500 to-purple-700",
-    badge: "bg-violet-100 text-violet-800",
-    meets: "Every Wednesday",
-    desc: "Build confidence and critical thinking through debate and public speaking.",
-    activities: ["Weekly Debates", "Inter-School Competitions"],
-  },
-  {
-    name: "Environmental & Gardening Club",
-    icon: "🌿",
-    color: "from-emerald-500 to-green-700",
-    badge: "bg-emerald-100 text-emerald-800",
-    meets: "Every Friday",
-    desc: "Students grow, plant, and lead sustainability campaigns around the school.",
-    activities: ["School Garden", "Tree Planting"],
-  },
-  {
-    name: "Creative Arts Club",
-    icon: "🎨",
-    color: "from-orange-400 to-rose-600",
-    badge: "bg-orange-100 text-orange-800",
-    meets: "Every Thursday",
-    desc: "Painting, drama, and creative writing — all displayed at the annual Arts Gala.",
-    activities: ["Drama & Theatre", "Arts Gala"],
-  },
-  {
-    name: "Christian Union",
-    icon: "✝️",
-    color: "from-amber-400 to-yellow-600",
-    badge: "bg-amber-100 text-amber-800",
-    meets: "Every Monday",
-    desc: "Fellowship, worship, and community outreach grounded in our school values.",
-    activities: ["Fellowship & Worship", "Community Outreach"],
-  },
-  {
-    name: "Journalism & Media Club",
-    icon: "📰",
-    color: "from-slate-500 to-gray-700",
-    badge: "bg-slate-100 text-slate-800",
-    meets: "Every Tuesday",
-    desc: "Students write, photograph, and film to produce the school newsletter.",
-    activities: ["School Newsletter", "Photography"],
-  },
-];
-
-const SPORTS = [
-  {
-    name: "Football",
-    icon: "⚽",
-    color: "from-green-500 to-emerald-700",
-    gender: "Boys & Girls",
-    season: "Year Round",
-    desc: "Competitive football for boys and girls in the regional school league.",
-    achievements: ["Regional League Finalists 2023", "3 National Call-Ups"],
-  },
-  {
-    name: "Basketball",
-    icon: "🏀",
-    color: "from-orange-500 to-red-600",
-    gender: "Boys & Girls",
-    season: "Term 1 & 2",
-    desc: "Fast-paced training three times a week with a dedicated coach.",
-    achievements: ["Zone Champions 2023", "Undefeated Home Season"],
-  },
-  {
-    name: "Athletics & Track",
-    icon: "🏃",
-    color: "from-yellow-500 to-amber-600",
-    gender: "All Students",
-    season: "Term 2",
-    desc: "Sprints, jumps, and field events leading to zonal and national competitions.",
-    achievements: ["5 Gold Medals – Zonal Games", "National Qualifier – 100m"],
-  },
-  {
-    name: "Volleyball",
-    icon: "🏐",
-    color: "from-blue-500 to-indigo-600",
-    gender: "Boys & Girls",
-    season: "Term 1 & 3",
-    desc: "Competitive and recreational sessions open to all skill levels.",
-    achievements: ["Sub-County Champions 2022", "Inter-School Invitational Winners"],
-  },
-  {
-    name: "Swimming",
-    icon: "🏊",
-    color: "from-cyan-500 to-teal-600",
-    gender: "All Students",
-    season: "Year Round",
-    desc: "Lessons for all ages, with advanced students competing at regional level.",
-    achievements: ["Water Safety Certified Programme", "Regional Relay Champions"],
-  },
-  {
-    name: "Chess",
-    icon: "♟️",
-    color: "from-stone-500 to-zinc-700",
-    gender: "All Students",
-    season: "Year Round",
-    desc: "Strategic thinking and patience, with regional and national competitions.",
-    achievements: ["National Schools Chess Top 10", "Regional Champion 2023"],
-  },
-];
-
-const COUNSELLING = [
-  {
-    title: "Academic Support",
-    icon: "📚",
-    color: "from-blue-500 to-indigo-600",
-    desc: "Personalised study plans and mentoring to help every student reach their potential.",
-    features: ["Individual Learning Plans", "Study Skills Workshops"],
-  },
-  {
-    title: "Social & Emotional Wellbeing",
-    icon: "💛",
-    color: "from-yellow-400 to-amber-500",
-    desc: "A safe, confidential space to talk through personal challenges and feelings.",
-    features: ["Confidential 1-on-1 Sessions", "Stress & Anxiety Management"],
-  },
-  {
-    title: "Career & Life Orientation",
-    icon: "🧭",
-    color: "from-emerald-500 to-green-700",
-    desc: "Helping students explore strengths, interests, and career pathways from Grade 7.",
-    features: ["Career Interest Assessments", "Subject Choice Guidance"],
-  },
-  {
-    title: "Conflict Resolution",
-    icon: "🤝",
-    color: "from-violet-500 to-purple-700",
-    desc: "Structured mediation that restores relationships and builds emotional intelligence.",
-    features: ["Peer Mediation Programme", "Anti-Bullying Initiatives"],
-  },
-  {
-    title: "Family & Parental Support",
-    icon: "👨‍👩‍👧",
-    color: "from-rose-500 to-pink-600",
-    desc: "Counsellors partner with families through consultations, workshops, and referrals.",
-    features: ["Parent Consultation Sessions", "Parenting Workshops"],
-  },
-  {
-    title: "Special Educational Needs",
-    icon: "⭐",
-    color: "from-orange-400 to-red-500",
-    desc: "Tailored Individual Education Plans for students with learning differences.",
-    features: ["Individual Education Plans (IEPs)", "Inclusive Classroom Support"],
-  },
-];
+import { CLUBS, SPORTS, COUNSELLING } from "./data";
 
 // Hero title and subtitle change depending on which section is active
 const SECTION_META = {
@@ -182,14 +23,14 @@ const SECTION_META = {
   },
 };
 
-// Tab buttons in the hero 
+// Tab buttons in the hero
 const SECTIONS = [
   { id: "clubs",      label: "Clubs & Activities",    icon: "🏆", path: "/student-life/clubs"      },
   { id: "sports",     label: "Sports",                 icon: "⚽", path: "/student-life/sports"     },
   { id: "counseling", label: "Guidance & Counselling", icon: "💛", path: "/student-life/counseling" },
 ];
 
-// Club card 
+// Club card
 function ClubCard({ club }) {
   const [open, setOpen] = useState(false);
   return (
@@ -242,7 +83,7 @@ function ClubCard({ club }) {
   );
 }
 
-// Sport card 
+// Sport card
 function SportCard({ sport }) {
   return (
     <div className="bg-white border border-gray-100 border-l-4 border-l-green-700 rounded-2xl

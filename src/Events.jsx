@@ -2,114 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-
-const EVENTS = [
-
-  //  UPCOMING 
-  {
-    id: 1,
-    title: "Open Day 2024",
-    date: "Sat, 15 June 2024",
-    time: "9:00 AM – 1:00 PM",
-    location: "Main Campus",
-    category: "Community",
-    status: "upcoming",
-    badge: "bg-emerald-100 text-emerald-800",
-    cta: { label: "RSVP", href: "/admission" },
-  },
-  {
-    id: 2,
-    title: "End of Term 1 Examinations",
-    date: "Mon 20 – Fri 24 May 2024",
-    time: "8:00 AM daily",
-    location: "All Classrooms",
-    category: "Academic",
-    status: "upcoming",
-    badge: "bg-blue-100 text-blue-800",
-    cta: null,
-  },
-  {
-    id: 3,
-    title: "Inter-School Athletics Meet",
-    date: "Sat, 8 June 2024",
-    time: "7:30 AM – 4:00 PM",
-    location: "County Stadium",
-    category: "Sports",
-    status: "upcoming",
-    badge: "bg-orange-100 text-orange-800",
-    cta: { label: "Details", href: "/student-life#sports" },
-  },
-  {
-    id: 4,
-    title: "Parents' Evening — Term 1",
-    date: "Thu, 16 May 2024",
-    time: "4:00 PM – 7:00 PM",
-    location: "School Hall",
-    category: "Community",
-    status: "upcoming",
-    badge: "bg-violet-100 text-violet-800",
-    cta: { label: "Book Slot", href: "/contact" },
-  },
-
-  // ONGOING 
-  {
-    id: 5,
-    title: "Term 1 — 2024 Academic Year",
-    date: "6 Jan – 5 Apr 2024",
-    time: "7:30 AM – 4:00 PM",
-    location: "All Campus",
-    category: "Academic",
-    status: "ongoing",
-    badge: "bg-yellow-100 text-yellow-800",
-    cta: null,
-  },
-  {
-    id: 6,
-    title: "Junior Secondary Football League",
-    date: "January – April 2024",
-    time: "Saturdays, 8:00 AM",
-    location: "School Sports Field",
-    category: "Sports",
-    status: "ongoing",
-    badge: "bg-green-100 text-green-800",
-    cta: { label: "Fixtures", href: "/student-life#sports" },
-  },
-
-  // To move events down once they're done
-  {
-    id: 7,
-    title: "Annual Arts Gala 2023",
-    date: "Fri, 10 November 2023",
-    time: "6:00 PM – 9:00 PM",
-    location: "School Auditorium",
-    category: "Arts",
-    status: "past",
-    badge: "bg-rose-100 text-rose-800",
-    cta: { label: "View Photos", href: "/media/gallery" },
-  },
-  {
-    id: 8,
-    title: "Junior Secondary Graduation 2023",
-    date: "Sat, 18 November 2023",
-    time: "10:00 AM – 1:00 PM",
-    location: "School Grounds",
-    category: "Community",
-    status: "past",
-    badge: "bg-slate-100 text-slate-800",
-    cta: { label: "View Photos", href: "/media/gallery" },
-  },
-  {
-    id: 9,
-    title: "Science & Technology Fair 2023",
-    date: "Fri, 28 April 2023",
-    time: "9:00 AM – 3:00 PM",
-    location: "School Hall",
-    category: "Academic",
-    status: "past",
-    badge: "bg-cyan-100 text-cyan-800",
-    cta: { label: "View Photos", href: "/media/gallery" },
-  },
-];
+import { EVENTS } from "./data";
 
 // Status badge styling
 const STATUS_STYLE = {
@@ -124,7 +17,7 @@ const STATUS_LABEL = {
   past:     "Completed",
 };
 
-// A single slim event row 
+// A single slim event row
 function EventCard({ event }) {
   return (
     <div className={`bg-white border-l-4 border-l-green-700 border border-gray-100 rounded-xl
@@ -176,7 +69,7 @@ function EventCard({ event }) {
 export default function Events() {
   const [activeStatus, setActiveStatus] = useState("all");
 
-  // How many events to show at once 
+  // How many events to show at once
   const [visibleEvents, setVisibleEvents] = useState(4);
 
   // Controls the pulsing animation on the Show More button
