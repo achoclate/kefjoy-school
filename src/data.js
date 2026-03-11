@@ -394,7 +394,6 @@ export const EVENTS = [
 ];
 
 //  GALLERY PAGE 
-
 // Category buttons 
 export const CATEGORIES = ["All", "Events", "Sports", "Academics", "Arts", "Campus"];
 

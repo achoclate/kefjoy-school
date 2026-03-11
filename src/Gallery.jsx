@@ -5,7 +5,8 @@ import Footer from "./Footer";
 import { CATEGORIES, PHOTOS, VIDEOS } from "./data";
 
 // Lightbox that is in full screen viewer when you click any photo
-// Navigation on the keyboard: Esc to close, left/right arrows to move
+// Navigation on the keyboard: Esc to close, left/right arrows to move 
+
 function Lightbox({ photo, onClose, onPrev, onNext }) {
   useEffect(() => {
     const handler = (e) => {

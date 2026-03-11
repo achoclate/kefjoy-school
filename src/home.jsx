@@ -105,34 +105,33 @@ export default function Home() {
       </section>
 
       {/* PROGRAMS */}
-      <section id="programs" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
-            What We Offer
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">
-            Our Programs
-          </h2>
-          <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
-          <p className="text-base leading-relaxed text-gray-600 font-sans max-w-2xl">
-            We offer a rich and balanced set of programs designed to develop every facet of your
-            child's potential — from academic excellence to creative expression and physical well-being.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {PROGRAMS.map((p) => (
-              <Link to="/programs" key={p.title}
-                className="bg-white rounded-lg p-4 shadow-sm border border-green-100
-                           border-l-4 border-l-green-700 relative overflow-hidden
-                           transition-all duration-300 cursor-pointer no-underline
-                           hover:-translate-y-1.5 hover:shadow-xl block">
-                <div className="text-4xl mb-4">{p.icon}</div>
-                <h3 className="text-xl font-bold text-green-900 mb-2">{p.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500 font-sans">{p.desc}</p>
-              </Link>
-            ))}
-          </div>
+<section id="programs" className="py-20 px-6 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <p className="text-xs font-black tracking-[3px] uppercase text-green-600 mb-2 font-sans">
+      What We Offer
+    </p>
+    <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4 leading-tight">
+      Our Programs
+    </h2>
+    <div className="w-14 h-1 bg-yellow-400 rounded mb-6" />
+    <p className="text-base leading-relaxed text-gray-600 font-sans max-w-2xl">
+      We offer a rich and balanced set of programs designed to develop every facet of your
+      child's potential — from academic excellence to creative expression and physical well-being.
+    </p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      {PROGRAMS.map((p) => (
+        <div key={p.title}
+          className="bg-white rounded-lg p-4 shadow-sm border border-green-100
+                     border-l-4 border-l-green-700 relative overflow-hidden
+                     transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+          <div className="text-4xl mb-4">{p.icon}</div>
+          <h3 className="text-xl font-bold text-green-900 mb-2">{p.title}</h3>
+          <p className="text-sm leading-relaxed text-gray-500 font-sans">{p.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA BANNER */}
       <div className="bg-gradient-to-br from-green-900 to-green-700 py-20 px-6 text-center text-white">

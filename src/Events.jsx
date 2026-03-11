@@ -4,7 +4,8 @@ import Navbar from "./navbar";
 import Footer from "./Footer";
 import { EVENTS } from "./data";
 
-// Status badge styling
+// Status badge styling  
+
 const STATUS_STYLE = {
   upcoming: "bg-emerald-50 text-emerald-700 border border-emerald-200",
   ongoing:  "bg-yellow-50 text-yellow-700 border border-yellow-200",
