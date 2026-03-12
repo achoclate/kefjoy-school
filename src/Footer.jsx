@@ -165,7 +165,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 border-t border-white/10 py-5 flex flex-col sm:flex-row items-center
                         justify-between gap-3 text-xs text-white/35 font-sans">
-          <p>Copyright © Kefjoy Academy & Cradle 2026. All Rights Reserved.</p>
+          <p>Copyright © Kefjoy Academy & Cradle {new Date().getFullYear()}. All Rights Reserved.</p>
           <div className="flex gap-4">
             <Link to="/about"     className="text-white/35 no-underline hover:text-yellow-400 transition-colors">About</Link>
             <Link to="/contact"   className="text-white/35 no-underline hover:text-yellow-400 transition-colors">Contact</Link>
